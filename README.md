@@ -28,20 +28,6 @@ Engineering leader specializing in:
 - **AI & MCP platforms** — agent orchestration, local inference, and Model Context Protocol tool layers for enterprise-grade automation
 - **Distributed systems at scale** — inventory automation across thousands of sites, national payment infrastructure, and high-throughput analytics
 
-[**Full CV — Experience, Education, and Technical Strategy →**](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/Technical-Strategy.md) · [Recommendations](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/Recommendations/README.md)
-
-## Connect
-
-| | |
-|---|---|
-| **CV / Resume** | [**Technical Strategy and Career**](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/Technical-Strategy.md) — full experience, education, skills, philosophy |
-| **Email** | [zlatko.lakisic@gmail.com](mailto:zlatko.lakisic@gmail.com) |
-| **Phone** | 336-682-9871 |
-| **LinkedIn** | [linkedin.com/in/zlatko-lakisic](https://www.linkedin.com/in/zlatko-lakisic/) |
-| **GitHub** | [github.com/zlatko-lakisic](https://github.com/zlatko-lakisic) |
-| **ORCID** | [0009-0004-8820-8881](https://orcid.org/0009-0004-8820-8881) |
-| **Location** | New York City, NY |
-
 ## Selected Outcomes
 
 | Domain | Business outcome |

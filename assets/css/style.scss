@@ -34,6 +34,37 @@ header p {
   opacity: 0.9;
 }
 
+.sidebar-connect {
+  margin: 1.25rem 0 0;
+}
+
+.sidebar-connect h2 {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #555;
+  margin: 0 0 0.5rem;
+}
+
+.sidebar-connect h2:not(:first-child) {
+  margin-top: 1rem;
+}
+
+.sidebar-connect ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.75rem;
+}
+
+.sidebar-connect li {
+  margin: 0 0 0.35rem;
+  line-height: 1.4;
+}
+
+.sidebar-connect p.view {
+  margin: 0 0 0.35rem;
+}
+
 section {
   line-height: 1.6;
 }
@@ -47,23 +78,6 @@ a {
 a:hover,
 a:focus {
   color: #0256b9;
-}
-
-section p:has(> strong:only-child > a[href*="Technical-Strategy"]) {
-  text-align: center;
-  margin: 1.75rem 0;
-  font-size: 1.35rem;
-  line-height: 1.4;
-}
-
-section p:has(> strong:only-child > a[href*="Technical-Strategy"]) a {
-  color: #0366d6;
-  text-decoration: underline;
-  font-weight: 700;
-}
-
-section p:has(> strong:only-child > a[href*="Technical-Strategy"]) strong {
-  font-weight: inherit;
 }
 
 table {

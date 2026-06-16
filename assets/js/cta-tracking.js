@@ -1,13 +1,23 @@
 (function () {
   'use strict';
 
-  if (typeof gtag !== 'function') {
-    return;
+  var measurementId = document.body && document.body.getAttribute('data-ga-id');
+  var THEME_FOOTER_PATH = '/orderedlist';
+  var NAVIGATION_TIMEOUT_MS = 500;
+
+  function hasGtag() {
+    return typeof gtag === 'function';
   }
 
-  var THEME_FOOTER_PATH = '/orderedlist';
+  function init() {
+    if (!hasGtag()) {
+      return;
+    }
 
-  document.addEventListener('click', function (event) {
+    document.addEventListener('click', onDocumentClick);
+  }
+
+  function onDocumentClick(event) {
     var anchor = event.target.closest('a[href]');
     if (!anchor || !anchor.closest('.wrapper')) {
       return;
@@ -23,8 +33,78 @@
     }
 
     var meta = buildEventMeta(anchor, href);
-    gtag('event', 'cta_click', meta);
-  });
+
+    if (shouldDeferNavigation(event, anchor, href)) {
+      event.preventDefault();
+      sendEvent(meta, function () {
+        window.location.assign(anchor.href);
+      });
+      return;
+    }
+
+    sendEvent(meta);
+  }
+
+  function sendEvent(meta, onComplete) {
+    var payload = {
+      transport_type: 'beacon',
+      cta_type: meta.cta_type,
+      link_url: meta.link_url,
+      link_text: meta.link_text,
+      link_section: meta.link_section,
+      page_path: meta.page_path,
+      page_title: meta.page_title
+    };
+
+    if (measurementId) {
+      payload.send_to = measurementId;
+    }
+
+    var completed = false;
+
+    function finish() {
+      if (completed) {
+        return;
+      }
+
+      completed = true;
+
+      if (typeof onComplete === 'function') {
+        onComplete();
+      }
+    }
+
+    if (typeof onComplete === 'function') {
+      payload.event_callback = finish;
+      window.setTimeout(finish, NAVIGATION_TIMEOUT_MS);
+    }
+
+    gtag('event', 'cta_click', payload);
+  }
+
+  function shouldDeferNavigation(event, anchor, href) {
+    if (event.defaultPrevented) {
+      return false;
+    }
+
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+      return false;
+    }
+
+    if (anchor.target && anchor.target.toLowerCase() === '_blank') {
+      return false;
+    }
+
+    if (href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0) {
+      return false;
+    }
+
+    if (href.charAt(0) === '#') {
+      return false;
+    }
+
+    return true;
+  }
 
   function isThemeFooterLink(anchor) {
     if (!anchor.closest('footer')) {
@@ -223,5 +303,11 @@
     }
 
     return normalized;
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
 })();

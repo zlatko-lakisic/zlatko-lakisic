@@ -20,6 +20,7 @@ relative_links:
 show_downloads: false
 
 github_username: zlatko-lakisic
+google_analytics: G-0R57S4CBRC
 
 defaults:
   - scope:

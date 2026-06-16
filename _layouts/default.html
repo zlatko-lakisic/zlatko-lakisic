@@ -12,7 +12,7 @@
     <![endif]-->
     {% include head-custom.html %}
   </head>
-  <body>
+  <body{% if site.google_analytics %} data-ga-enabled="true"{% endif %}>
     <div class="wrapper">
       <header>
         <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
@@ -54,5 +54,8 @@
       </footer>
     </div>
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+    {% if site.google_analytics %}
+    <script src="{{ '/assets/js/cta-tracking.js' | relative_url }}"></script>
+    {% endif %}
   </body>
 </html>

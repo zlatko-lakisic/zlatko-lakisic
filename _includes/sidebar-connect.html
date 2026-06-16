@@ -1,15 +1,15 @@
 <nav class="sidebar-connect" aria-label="Portfolio links and contact">
   <h2>Portfolio</h2>
-  <p class="view"><a href="{% link Technical-Strategy.md %}">CV &amp; Technical Strategy</a></p>
-  <p class="view"><a href="{% link Recommendations/README.md %}">Recommendations</a></p>
+  <p class="view"><a href="{% link Technical-Strategy.md %}">{% include connect-icon.html name="cv" %}<span>CV &amp; Technical Strategy</span></a></p>
+  <p class="view"><a href="{% link Recommendations/README.md %}">{% include connect-icon.html name="recommendations" %}<span>Recommendations</span></a></p>
 
   <h2>Connect</h2>
   <ul>
-    <li><a href="mailto:zlatko.lakisic@gmail.com">Email</a></li>
-    <li><a href="tel:+13366829871">336-682-9871</a></li>
-    <li><a href="https://www.linkedin.com/in/zlatko-lakisic/">LinkedIn</a></li>
-    <li><a href="https://github.com/zlatko-lakisic">GitHub</a></li>
-    <li><a href="https://orcid.org/0009-0004-8820-8881">ORCID</a></li>
-    <li>New York City, NY</li>
+    <li><a href="mailto:zlatko.lakisic@gmail.com">{% include connect-icon.html name="email" %}<span>Email</span></a></li>
+    <li><a href="tel:+13366829871">{% include connect-icon.html name="phone" %}<span>336-682-9871</span></a></li>
+    <li><a href="https://www.linkedin.com/in/zlatko-lakisic/">{% include connect-icon.html name="linkedin" %}<span>LinkedIn</span></a></li>
+    <li><a href="https://github.com/zlatko-lakisic">{% include connect-icon.html name="github" %}<span>GitHub</span></a></li>
+    <li><a href="https://orcid.org/0009-0004-8820-8881">{% include connect-icon.html name="orcid" %}<span>ORCID</span></a></li>
+    <li class="connect-row">{% include connect-icon.html name="location" %}<span>New York City, NY</span></li>
   </ul>
 </nav>

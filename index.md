@@ -78,10 +78,12 @@ Capabilities grounded in delivered outcomes — not tool lists for their own sak
 
 ## Deep Dives
 
-Architecture narratives by specialty — for career history see **[Full CV](./Technical-Strategy.md)** above.
+Architecture narratives by specialty — career history on the **[Resume](./Resume.md)**; strategic approach in **[Technical Strategy](./Technical-Strategy.md)**.
 
 | Document | Audience | Contents |
 | :-- | :-- | :-- |
+| [**Resume**](./Resume.md) | Recruiters, hiring managers | Experience, education, skills |
+| [**Technical Strategy**](./Technical-Strategy.md) | Engineering leaders, architects | Philosophy, frameworks, how strategy maps to delivery |
 | [**Architecture Case Studies**](/zlatko-lakisic/Projects.html) | Recruiters, technical peers | Business problem → outcome project catalog with diagrams |
 | [**Healthcare Architecture**](./Healthcare/README.md) | Healthcare IT, life sciences | Connected care, private networks, device connectivity, resilience |
 | [**Identity & Access**](./Identity/README.md) | Security architects, IAM engineers | Enterprise federation, zero-trust segmentation, credential governance |

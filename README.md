@@ -79,10 +79,12 @@ Capabilities grounded in delivered outcomes — not tool lists for their own sak
 
 ## Deep Dives
 
-Architecture narratives by specialty — for career history see **[Full CV](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/Technical-Strategy.md)** above.
+Architecture narratives by specialty — career history on the **[Resume](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/Resume.md)**; strategic approach in **[Technical Strategy](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/Technical-Strategy.md)**.
 
 | Document | Audience | Contents |
 | :-- | :-- | :-- |
+| [**Resume**](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/Resume.md) | Recruiters, hiring managers | Experience, education, skills |
+| [**Technical Strategy**](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/Technical-Strategy.md) | Engineering leaders, architects | Philosophy, frameworks, how strategy maps to delivery |
 | [**Architecture Case Studies**](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/Projects.md) | Recruiters, technical peers | Business problem → outcome project catalog with diagrams |
 | [**Healthcare Architecture**](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/Healthcare/README.md) | Healthcare IT, life sciences | Connected care, private networks, device connectivity, resilience |
 | [**Identity & Access**](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/Identity/README.md) | Security architects, IAM engineers | Enterprise federation, zero-trust segmentation, credential governance |

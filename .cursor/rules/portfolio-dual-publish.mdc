@@ -26,7 +26,7 @@ This repo publishes the homepage two ways:
 
 ## Other pages
 
-- Subpages (`Projects.md`, `Technical-Strategy.md`, `Healthcare/`, etc.) use `./index.md` for “back to portfolio” on Pages.
+- Subpages (`Resume.md`, `Projects.md`, `Technical-Strategy.md`, `Healthcare/`, etc.) use `./index.md` for “back to portfolio” on Pages.
 - Do not point subpages at `README.md`.
 
 ## Jekyll

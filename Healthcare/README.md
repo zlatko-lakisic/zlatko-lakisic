@@ -24,5 +24,5 @@ Baxter · Cleveland Clinic · Mayo Clinic · Kaiser Permanente · Stryker · VA 
 
 ## Related case studies & CV
 
-- [Architecture Case Studies — Walmart](../Projects.md) · [Technical Strategy — Verizon](../Technical-Strategy.md#chief-architect--verizon-new-york-ny)
+- [Architecture Case Studies — Walmart](../Projects.md) · [Resume — Verizon](../Resume.md#chief-architect--verizon-new-york-ny)
 - [Sam Aria recommendation](../Recommendations/sam-aria.md) · [Robin Goldsmith recommendation](../Recommendations/robin-goldsmith.md)

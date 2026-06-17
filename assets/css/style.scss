@@ -137,3 +137,43 @@ blockquote {
   padding-left: 1rem;
   color: #444;
 }
+
+body.resume-page section > h1:first-child {
+  font-size: 1.75rem;
+  margin-bottom: 0.25rem;
+}
+
+body.resume-page section > p:first-of-type {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+body.resume-page section > h2 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #333;
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 0.35rem;
+  margin-top: 1.75rem;
+}
+
+body.resume-page section h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.15rem;
+}
+
+body.resume-page section h3 + p em {
+  font-style: normal;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+body.resume-page section ul {
+  margin-top: 0.35rem;
+  margin-bottom: 1.25rem;
+}
+
+body.resume-page section li {
+  margin-bottom: 0.35rem;
+}

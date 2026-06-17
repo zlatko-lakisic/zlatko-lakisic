@@ -1,18 +1,6 @@
-# Technical Strategy and Career
+# Technical Strategy
 
-**Full CV** · [← Main Portfolio](./index.md)
-
-<p align="center">
-  <img src="https://avatars.githubusercontent.com/u/255580783?s=400&u=861eba2740c4b7c3e7f5902ddd2fb75f016dfec2&v=4" alt="Zlatko Lakisic" width="200" />
-</p>
-
-<p align="center">
-  <strong>Zlatko Lakisic</strong><br />
-  Engineering Leader · New York City, NY<br />
-  <a href="mailto:zlatko.lakisic@gmail.com">zlatko.lakisic@gmail.com</a> ·
-  <a href="https://www.linkedin.com/in/zlatko-lakisic/">LinkedIn</a> ·
-  <a href="https://github.com/zlatko-lakisic">GitHub</a>
-</p>
+[← Main Portfolio](./index.md) · [Resume](./Resume.md) · [Architecture Case Studies](./Projects.md)
 
 ---
 
@@ -36,184 +24,41 @@ That recycle-first discipline also mitigates vendor lock-in. When you can reprod
 
 ---
 
-## Experience
+## AI Transformation Framework
 
-### Chief Architect — Verizon, New York, NY
-*04/2021 – 01/2026*
+The portfolio homepage illustrates four pillars for enterprise AI adoption:
 
-- **Enterprise Integration Lead** — Primary technical point of contact for global enterprise accounts; designed integration architectures using APIs and partner systems for long-term cloud scalability.
-- **Strategic Onboarding** — Led technical discovery and architecture workshops to align platform capabilities with complex operational workflows.
-- **AI & Roadmap Influence** — Managed the feedback loop between enterprise users and engineering for a 95% accurate AI/ML model; turned customer insights into product roadmap opportunities.
-- **Cross-functional Advocacy** — Partnered with Sales and Customer Success to prioritize features and resolve technical blockers for high-value verticals.
-
-**Strategy & leadership**
-
-- Tasked with productizing the healthcare vertical for Verizon private networks — engaging marquee health systems and hunting new opportunities through healthcare OEM partners.
-- Positioned network offerings as integrated solution elements rather than commodities; built relationships with commercial off-the-shelf vendors whose platforms complemented Verizon connectivity.
-- Broke down internal silos across business, client partner, and product organizations; engaged C-suite executives and client leadership across pre-sales, delivery, and post-sales.
-
-**Representative engagements**
-
-Logistics and transport · aviation · financial services · sports and entertainment · healthcare and life sciences · manufacturing · public sector — including Ryder, JetBlue, Morgan Stanley, Monumental Sports, Cleveland Clinic, Mayo Clinic, Kaiser Permanente, Baxter, Stryker, Samsung, the VA, Goya Foods, Otis, and Cummins.
-
-**Selected impact**
-
-- Advocated for multi-million-dollar internal investment in the Motion Analytics initiative.
-- Uncovered a high-value use case and architected a solution that contributed to a multi-million-dollar private network engagement at a leading U.S. health system.
-- Drove a healthcare OEM opportunity from conference demonstration through a co-innovation agreement, six-figure network deployment, and a long-term cellular adoption roadmap.
-
-**Selected projects**
-
-*Motion Analytics (logistics)* — Transformed telematics and sensor data into operational insights for warehouse throughput and driver safety. Built behavioral pattern analysis, predictive bottleneck forecasting, automated safety-event reporting, and manager-facing operational dashboards.
-
-*Healthcare connectivity resilience* — Led architecture for a multi-tier resilience layer combining private wireless, fixed wireless access, and satellite backup for executive and mission-critical operations. Led technical demonstrations at major healthcare conferences; delivered a high-six-figure integrated solution aligned to healthcare-grade reliability requirements.
-
-### Founder — Omega IT LLC, New York, NY
-*11/2019 – 03/2021*
-
-- **Implementation Engineering** — Founded a consultancy focused on enterprise content management; owned end-to-end technical lifecycle and implementation playbooks for long-term clients.
-- **Platform Adoption & Patterns** — Designed custom integration patterns (SSO, webhooks) and provided hands-on architectural guidance through enterprise-grade implementations.
-- **Technical Leadership** — Translated complex operational KPIs into technical specifications and reusable solution patterns.
-
-**Representative engagements** — Tyson Fresh Meats, Cormac Tagging
-
-**Selected projects**
-
-*Tyson Fresh Meats digital platform* — Led migration of high-traffic web properties from WordPress to Drupal 8, including custom modules, security and SEO hardening, and deployment workflow improvements. Primary technical liaison between Omega IT and agency partners.
-
-*Cormac Tagging livestock platform* — Architected IoT and electronic identification integration with automated drafting and health-monitoring partners; ensured regulatory compliance for Irish agricultural standards. Helped the client evolve from tag supplier to AgriTech platform, with strong customer retention and significant market-share growth.
-
-### Principal Consultant — Genpact, New York, NY
-*11/2018 – 11/2019*
-
-- **Discovery Architecture** — Directed backend Discovery Architecture and HLSD for a massive-scale Inventory Automation initiative across 5,500 retail locations.
-- **Scalable Delivery** — Provided the architectural north star for backend teams during global digital transformation.
-- **Technical Due Diligence** — Conducted deep-dive reviews of code and architecture for mission-critical client systems.
-
-**Representative engagements** — Walmart
-
-**Selected projects**
-
-*Walmart inventory automation* — Lead architect and delivery director for enterprise inventory automation across Walmart and Sam's Club. Unified 50+ disparate systems spanning modern APIs and legacy warehouse protocols into a dual-mode integration bridge; designed real-time data orchestration across 5,500 locations and a three-stage HITL ML pipeline for document matching. Led a team of 15 through discovery, HLSD, and deployment on the Sequence platform (.NET, SQL Server). [Full project brief →](./Projects.md#walmart-inventory-automation)
-
-### Senior Distributed Systems Development Specialist — The Clearing House, Winston-Salem, NC
-*04/2018 – 11/2018*
-
-- **System Reliability** — Managed technical health of critical financial systems; proactively identified risks to ensure 24/7 platform stability.
-- **Stakeholder Alignment** — Translated technical performance metrics into business-level insights for executive stakeholders.
-
-**Selected projects**
-
-*National check validation modernization* — Contributed to modernization of the image exchange network underpinning U.S. electronic check clearing. Engineered high-throughput, resilient distributed services and secure API frameworks; applied resilience engineering and compliance standards for national payment infrastructure.
-
-### Director, Solutions Architecture — ZoominTV, Amsterdam, Netherlands
-*06/2015 – 06/2017*
-
-- **Global Architecture** — Architected scalable media delivery platforms from discovery blueprint through global deployment.
-- **Mentorship & Best Practices** — Mentored junior architects and engineers; established documentation and implementation frameworks.
-
-**Selected projects**
-
-*ViewBooster* — Head of development and architecture for a high-scale ad-tech and analytics platform while Zoomin was among the largest YouTube multi-channel networks globally. Built daily ingestion and analysis across millions of channels, a proprietary promotion engine for ~100,000 managed channels, and a unified management interface (AngularJS, Web API, analytics visualizations) with automated campaign optimization.
-
-### Product Director — Green River Media, London, UK
-*06/2010 – 05/2015*
-
-- **Technical Strategy** — Defined product vision and technical architecture for Ektron-based enterprise web applications.
-- **Technical Point of Contact** — Managed end-to-end client engagements; aligned solutions with enterprise business objectives.
-
-**Representative engagements** — Ektron, Sitecore, Episerver, Alstom, Thales, Arriva Bus, Freestyle Interactive
-
-**Selected projects**
-
-*Enterprise CMS architecture* — Main solution architect for Ektron implementations: Microsoft Search Server integration, large-scale version migrations, and high-availability launches including Eurotunnel and Emco Wheaton (Gardner Denver). Provided end-to-end technical strategy and post-deployment optimization for global marketing and engineering teams.
+| Pillar | Focus |
+| :-- | :-- |
+| **Strategy** | Outcome-first roadmaps aligned to business metrics |
+| **Integration** | API and MCP tool boundaries |
+| **Empowerment** | Self-hosted inference and agent workflows |
+| **Governance** | Credential-scoped catalogs, segmented trust, operational sustainability |
 
 ---
 
-## Education
+## How Strategy Maps to Delivery
 
-**B.Sc. in Computer Sciences** — University of Travnik, Bosnia and Herzegovina
+| Domain | Strategic approach | Where to read more |
+| :-- | :-- | :-- |
+| **Enterprise integration** | Discovery → HLSD → dual-mode bridges for legacy and modern estates | [Walmart case study](./Projects.md#walmart-inventory-automation) |
+| **Healthcare connectivity** | Private networks as integrated solution elements, not commodities | [Healthcare architecture](./Healthcare/README.md) |
+| **Identity & access** | SAML/OAuth federation, segmented trust zones, credential-scoped catalogs | [Identity & Access](./Identity/README.md) |
+| **AI & MCP platforms** | Local inference, agent orchestration, MCP tool layers | [Local AI and MCP](./Engineering/Local-AI-MCP.md) |
+| **Infrastructure efficiency** | Bare-metal density, VLAN isolation, production-faithful sandboxes | [Infrastructure and Home Lab](./Engineering/Infrastructure.md) |
 
-## Languages
+---
 
-| Language | Proficiency |
-| :-- | :-- |
-| **Bosnian** | Native or bilingual |
-| **Croatian** | Native or bilingual |
-| **English** | Native or bilingual |
-| **Serbian** | Native or bilingual |
+## Representative Impact
 
-## Causes
+Selected outcomes that illustrate how strategy translates to delivery — full career history is on the **[Resume](./Resume.md)**.
 
-Animal Welfare · Civil Rights and Social Action · Education · Health · Human Rights · Science and Technology
-
-## Skills
-
-### Enterprise architecture and platform
-
-| Skill | Context |
-| :-- | :-- |
-| Enterprise Architecture and Design Patterns | [OmegaCMS](https://github.com/zlatko-lakisic/omegacms) |
-| Cloud-Agnostic Infrastructure (Multi-Cloud) | OmegaCMS — AWS Lambda, Azure Functions, Google Cloud |
-| Serverless Computing and Event-Driven Architecture | OmegaCMS |
-| Data Federation and Orchestration | OmegaCMS |
-| Outcome-First Engineering (Strategic Execution) | OmegaCMS |
-
-### Agentic AI and orchestration
-
-| Skill | Context |
-| :-- | :-- |
-| Agentic workflow design & LLM orchestration | [Agentic Orchestration](https://github.com/zlatko-lakisic/agentic-orchestration) |
-| Recursive Task Synthesis | Agentic Orchestration |
-| Cognitive Architecture | Agentic Orchestration |
-| Automated Reasoning | Agentic Orchestration |
-| Quality Assurance (AI-Driven) | Agentic Orchestration |
-| Model Context Protocol (MCP) | Agentic Orchestration |
-| System Orchestration | Agentic Orchestration |
-| Logic and Factuality Verification | Agentic Orchestration |
-
-### Leadership, strategy, and client engagement
-
-Innovation Strategy · Digital Transformation · Strategic Partnerships · Enterprise Architecture · Change Management · Business Case Development · Executive Presentations · Technical Documentation · SOW Development · RFP/RFI Response · Demos and POCs · Architectural Design · Client Discovery · Vendor and Partner Management · P&L Awareness · Client and Stakeholder Engagement · Cross-functional Collaboration · Talent Development · Technology Strategy · Mentoring · Team Leadership · Management · Project Management · Leadership · Strategic Planning · Customer Service · Business Strategy · Business Development · Sales · New Business Development · Microsoft Office
-
-### Development stack
-
-**Web client-side** — HTML, XML, XSLT, XSD, XHTML, CSS, JavaScript, AJAX, jQuery, AngularJS, Angular Material, Bootstrap, JSON
-
-**Web server-side** — ASP.NET Web Forms and MVC (C#/VB), ASP.NET Web API, Classic ASP, WCF, PHP, ColdFusion, Java (JSP), Node.js
-
-**Desktop** — Windows Forms, Windows Services, WPF, Java (Swing and SWT)
-
-**Databases** — Microsoft SQL Server (T-SQL), MySQL
-
-**Platforms and tools** — C# (LinkedIn Skill Assessment) · Visual Studio · Eclipse · IIS · Windows Server · Linux (Debian) · Apache · Content Management Systems (CMS) · Software Development · Web Applications · Web Development
-
-### Core competencies summary
-
-| Area | Competencies |
-| :-- | :-- |
-| **Solutions Architecture** | Enterprise enablement, technical discovery, implementation playbooks, API integration design (REST, webhooks) |
-| **Security and Compliance** | SSO (SAML/OAuth), identity management, data governance, SOC 2 concepts |
-| **Cloud and Data** | Cloud-native design (AWS/Azure), distributed systems, data pipelines, motion/telematics analytics, system investigation and debugging |
-| **Leadership** | Stakeholder management, product roadmap influence, cross-functional coordination, C-suite engagement |
-
-## Recommendations
-
-Nine professional recommendations — each with full text in its own page.
-
-| Recommender | Role |
-| :-- | :-- |
-| [Jon Woodland](./Recommendations/jon-woodland.md) | Director, Technology Development and Integration, Verizon |
-| [Sam Aria](./Recommendations/sam-aria.md) | Sr. Client Partner, Verizon Business Group |
-| [Robin Goldsmith](./Recommendations/robin-goldsmith.md) | Practice Leader, Healthcare and Life Sciences, Verizon Business |
-| [Gert-Jan Vrolijk](./Recommendations/gert-jan-vrolijk.md) | Director IT, Zoomin.TV |
-| [Maarten Kruit](./Recommendations/maarten-kruit.md) | IT Coordinator, Zoomin.TV |
-| [Matt Happel](./Recommendations/matt-happel.md) | Senior Lead Full Stack Developer, Market America |
-| [Norman Graves](./Recommendations/norman-graves.md) | Business Development Director, Green River Media |
-| [Ivan Varbanov](./Recommendations/ivan-varbanov.md) | SRE, DevOps, Cloud Infrastructure |
-| [Haris Šečić](./Recommendations/haris-secic.md) | Software Developer |
-
-[View all recommendations →](./Recommendations/README.md)
+- **Retail supply chain** — Unified 50+ legacy and modern systems across 5,500 Walmart and Sam's Club locations; eliminated 3×–4× inventory rework cycles tied to corporate P&L.
+- **Healthcare connectivity** — Drove Baxter private-network adoption and multi-million-dollar health-system engagements; private wireless, FWA, and satellite resilience for mission-critical care.
+- **Enterprise AI influence** — Managed customer feedback loop for a 95%-accurate ML model at Verizon; translated field insights into product roadmap priorities.
+- **Media & ad-tech scale** — Architected ViewBooster for 60,000+ YouTube channels; sub-second analytics at a top global MCN.
+- **National payments** — Contributed to U.S. electronic check-clearing modernization at The Clearing House.
+- **Content platforms** — Co-founded OmegaCMS — headless, multi-tenant ECM with serverless-ready, database-agnostic architecture.
 
 ---
 

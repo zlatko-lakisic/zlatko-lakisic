@@ -55,7 +55,7 @@ Headless CMS · REST APIs · multi-tenant localization · edge caching · .NET C
 
 Co-Founder and Solutions Architect at [Omega Content Management Services](https://www.linkedin.com/company/omega-cms). Led customer blueprinting, architecture documentation, .NET Core services, federated data integration, and AWS migration playbooks for enterprise clients.
 
-**Deep dive** → [OmegaCMS on GitHub](https://github.com/zlatko-lakisic/omegacms) · [Technical Strategy & Career](./Technical-Strategy.md#founder--omega-it-llc-new-york-ny)
+**Deep dive** → [OmegaCMS on GitHub](https://github.com/zlatko-lakisic/omegacms) · [Resume — Omega IT LLC](./Resume.md#founder--omega-it-llc-new-york-ny)
 
 ---
 
@@ -113,7 +113,7 @@ Event-driven architecture · synchronous/asynchronous microservices · enterpris
 
 Principal Consultant — Lead architect and delivery director. Led a team of 15 through discovery, HLSD, and deployment. Directed backend discovery architecture for the inventory automation initiative across Walmart and Sam's Club.
 
-**Related experience** → [Technical Strategy & Career — Genpact](./Technical-Strategy.md#principal-consultant--genpact-new-york-ny)
+**Related experience** → [Resume — Genpact](./Resume.md#principal-consultant--genpact-new-york-ny)
 
 ---
 
@@ -154,7 +154,7 @@ Event-driven integration · message queues · OT/IT network segregation · idemp
 
 Lead Developer and later Product Director at Green River Media. Designed and implemented integration architecture, on-site client delivery, and server infrastructure for global manufacturing and infrastructure clients.
 
-**Related experience** → [Technical Strategy & Career — Green River Media](./Technical-Strategy.md#product-director--green-river-media-london-uk)
+**Related experience** → [Resume — Green River Media](./Resume.md#product-director--green-river-media-london-uk)
 
 ---
 
@@ -196,7 +196,7 @@ C# .NET · Google APIs · message queues · stream processing · AngularJS / Ang
 
 Director, Solutions Architecture and Head of Development. Led a global team of 27; defined platform strategy for creator monetization and merchandising revenue streams.
 
-**Related experience** → [Technical Strategy & Career — ZoominTV](./Technical-Strategy.md#director-solutions-architecture--zoomintv-amsterdam-netherlands)
+**Related experience** → [Resume — Zoomin.TV](./Resume.md#director-solutions-architecture--zoomintv-amsterdam-netherlands)
 
 ---
 

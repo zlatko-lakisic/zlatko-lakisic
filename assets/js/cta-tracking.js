@@ -220,8 +220,12 @@
       return 'orcid';
     }
 
+    if (url.pathname.indexOf('Resume') !== -1) {
+      return 'resume';
+    }
+
     if (url.pathname.indexOf('Technical-Strategy') !== -1) {
-      return 'cv';
+      return 'technical_strategy';
     }
 
     if (url.pathname.indexOf('Recommendations') !== -1) {

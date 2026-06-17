@@ -20,6 +20,6 @@ Identity and access work spans **enterprise federation** in client delivery and 
 
 ## Related experience
 
-- [Technical Strategy — Skills](../Technical-Strategy.md) (Security and Compliance)
+- [Resume — Skills](../Resume.md) (Security and Identity)
 - [Infrastructure — Network Segregation](../Engineering/Infrastructure.md#network-segregation-strategy)
 - [Local AI & MCP — Security Considerations](../Engineering/Local-AI-MCP.md#security-considerations)

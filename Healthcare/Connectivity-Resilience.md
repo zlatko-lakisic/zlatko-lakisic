@@ -34,4 +34,4 @@ Multi-tier resilience layer combining:
 - Led **technical demonstrations at major healthcare conferences** — architecture validated with health-system executives before deployment
 - Established **repeatable resilience pattern** applicable across health-system accounts in the Verizon portfolio
 
-**Related experience** → [Technical Strategy — Verizon](../Technical-Strategy.md#chief-architect--verizon-new-york-ny)
+**Related experience** → [Resume — Verizon](../Resume.md#chief-architect--verizon-new-york-ny)

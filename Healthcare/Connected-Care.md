@@ -33,4 +33,4 @@ Health systems and medical-device OEMs need reliable, secure connectivity beyond
 - **Healthcare OEM pipeline** — co-innovation agreement, six-figure network deployment, and long-term cellular adoption roadmap from conference through production
 - **Multi-million-dollar engagements** — contributed to private network opportunities at leading U.S. health systems
 
-**Related experience** → [Technical Strategy — Verizon](../Technical-Strategy.md#chief-architect--verizon-new-york-ny)
+**Related experience** → [Resume — Verizon](../Resume.md#chief-architect--verizon-new-york-ny)

@@ -28,6 +28,6 @@ Enterprise clients adopting new content and integration platforms cannot tolerat
 
 - Designed **custom SSO and webhook integration patterns** for Tyson Fresh Meats, Cormac Tagging, and enterprise ECM clients at Omega IT LLC
 - Delivered **identity-aware platform adoption** as a core competency in [OmegaCMS](../Projects.md#omega-cms) implementations
-- Documented **Security and Compliance** skills including SSO (SAML/OAuth), identity management, and data governance in [Technical Strategy](../Technical-Strategy.md)
+- Documented **Security and Compliance** skills including SSO (SAML/OAuth), identity management, and data governance on the [Resume](../Resume.md)
 
 **Related case study** → [OmegaCMS](../Projects.md#omega-cms)

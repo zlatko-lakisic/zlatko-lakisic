@@ -1,5 +1,5 @@
 ﻿<!-- AUTO-GENERATED from index.md. Do not edit README.md directly. Run: scripts/sync-readme.ps1 -->
-**Engineering Leader · Technical Strategy & Customer-Centric Solutions**
+**Private Networks Architect & Practice Lead · Enterprise Presales & Connected Solutions**
 
 **[View formatted portfolio on GitHub Pages →](https://zlatko-lakisic.github.io/zlatko-lakisic/)** — case studies and deep dives with the Minimal theme.
 

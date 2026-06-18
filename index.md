@@ -1,4 +1,4 @@
-**Engineering Leader · Technical Strategy & Customer-Centric Solutions**
+**Private Networks Architect & Practice Lead · Enterprise Presales & Connected Solutions**
 
 **[View formatted portfolio on GitHub Pages →](https://zlatko-lakisic.github.io/zlatko-lakisic/)** — case studies and deep dives with the Minimal theme.
 

@@ -60,9 +60,10 @@ Reference code behind the narratives above — explore [case studies](https://gi
 *Model-agnostic CrewAI orchestration with MCP tool servers and Ollama backends — [architecture deep-dive →](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/Engineering/Local-AI-MCP.md)*
 
 [![My-Futuristic-Home](https://gh-card.dev/repos/zlatko-lakisic/My-Futuristic-Home.svg?fullname=)](https://github.com/zlatko-lakisic/My-Futuristic-Home)
+[![hacs-msnswitch](https://gh-card.dev/repos/zlatko-lakisic/hacs-msnswitch.svg?fullname=)](https://github.com/zlatko-lakisic/hacs-msnswitch)
 [![omegacms](https://gh-card.dev/repos/zlatko-lakisic/omegacms.svg?fullname=)](https://github.com/zlatko-lakisic/omegacms)
 
-*VLAN-segmented home lab and Proxmox workloads · Decoupled ECM platform — [case study →](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/Projects.md#omega-cms)*
+*VLAN-segmented home lab and Proxmox workloads · LAN-only MSNSwitch smart-PDU control in Home Assistant · Decoupled ECM platform — [case study →](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/Projects.md#omega-cms)*
 
 ## Technical Domains
 

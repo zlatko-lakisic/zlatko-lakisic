@@ -202,13 +202,14 @@ Director, Solutions Architecture and Head of Development. Led a global team of 2
 
 ## Related Open-Source & Lab Projects
 
-These active GitHub repositories extend the project work above into local AI, agent orchestration, and hands-on infrastructure — not listed separately on LinkedIn but part of the same engineering narrative.
+These active GitHub repositories extend the project work above into local AI, agent orchestration, Home Assistant integrations, and hands-on infrastructure — not listed separately on LinkedIn but part of the same engineering narrative.
 
 | Project | Repository |
 |---|---|
 | Agentic Orchestration | [agentic-orchestration](https://github.com/zlatko-lakisic/agentic-orchestration) |
 | Ollama MultiModal LLM (CodeProject.AI) | [CodeProjectAI-OmegaOllamaMLLM](https://github.com/zlatko-lakisic/CodeProjectAI-OmegaOllamaMLLM) |
 | My Futuristic Home (home lab) | [My-Futuristic-Home](https://github.com/zlatko-lakisic/My-Futuristic-Home) |
+| MSNSwitch HACS Integration (Home Assistant) | [hacs-msnswitch](https://github.com/zlatko-lakisic/hacs-msnswitch) |
 
 ---
 

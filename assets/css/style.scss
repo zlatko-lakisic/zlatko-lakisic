@@ -14,12 +14,6 @@ img {
 
 header {
   margin-bottom: 1.5rem;
-  /* Minimal theme uses a 270px fixed header — keep badge/content inside it */
-  max-height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-  box-sizing: border-box;
-  padding-right: 0.25rem;
 }
 
 header img {
@@ -99,51 +93,70 @@ header p {
   word-break: break-word;
 }
 
-.linkedin-badge-wrap {
-  --li-badge-native-width: 300px;
-  --li-badge-scale: 0.82;
-  width: calc(var(--li-badge-native-width) * var(--li-badge-scale));
+.linkedin-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: 100%;
   max-width: 100%;
-  margin: 0.25rem 0 1.1rem;
-  overflow: hidden;
-  isolation: isolate;
-  line-height: 0;
+  box-sizing: border-box;
+  margin: 0.35rem 0 1rem;
+  padding: 0.65rem 0.7rem;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  background: #fff;
+  text-decoration: none !important;
+  color: inherit;
+  line-height: 1.3;
 }
 
-.linkedin-badge-wrap .LI-profile-badge,
-.linkedin-badge-wrap .profile-badge,
-.linkedin-badge-wrap .badge-base {
+.linkedin-profile-card:hover,
+.linkedin-profile-card:focus {
+  border-color: #0a66c2;
+  background: #f3f9ff;
+}
+
+.linkedin-profile-card__photo {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  margin: 0 !important;
   display: block;
-  width: var(--li-badge-native-width);
-  max-width: none;
-  transform: scale(var(--li-badge-scale));
-  transform-origin: top left;
-  /* reclaim the unused layout box after scale so links below don’t get covered */
-  margin-bottom: calc((var(--li-badge-scale) - 1) * 120px);
 }
 
-.linkedin-badge-wrap iframe {
-  max-width: none !important;
+.linkedin-profile-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
 }
 
-@media print, screen and (max-width: 960px) {
-  header {
-    max-height: none;
-    overflow: visible;
-  }
+.linkedin-profile-card__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #0a66c2;
+}
 
-  .linkedin-badge-wrap {
-    --li-badge-scale: 1;
-    width: min(100%, var(--li-badge-native-width));
-    margin-left: auto;
-    margin-right: auto;
-  }
+.linkedin-profile-card__brand .connect-icon {
+  color: #0a66c2;
+}
 
-  .linkedin-badge-wrap .LI-profile-badge,
-  .linkedin-badge-wrap .profile-badge,
-  .linkedin-badge-wrap .badge-base {
-    margin-bottom: 0;
-  }
+.linkedin-profile-card__name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #24292f;
+}
+
+.linkedin-profile-card__cta {
+  font-size: 0.8rem;
+  color: #57606a;
 }
 
 section {
@@ -237,9 +250,7 @@ body.resume-page section li {
 }
 
 .writing-entry {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 1rem;
+  display: block;
   padding: 1.5rem 0;
   border-bottom: 1px solid #e5e5e5;
 }
@@ -257,13 +268,14 @@ body.resume-page section li {
   overflow: hidden;
   border-radius: 4px;
   background: #f4f4f4;
+  margin: 0 0 0.85rem;
 }
 
 .writing-entry-media img,
 .writing-cover img {
   width: 100%;
   height: auto;
-  max-height: 22rem;
+  max-height: 16rem;
   object-fit: cover;
   display: block;
   margin: 0;
@@ -289,24 +301,24 @@ body.resume-page section li {
 
 .writing-entry-body h3 {
   margin: 0 0 0.5rem;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   line-height: 1.3;
+}
+
+.writing-entry-body h3 a {
+  text-decoration: none;
+}
+
+.writing-entry-body h3 a:hover,
+.writing-entry-body h3 a:focus {
+  text-decoration: underline;
 }
 
 .writing-entry-body p {
   margin: 0 0 0.75rem;
 }
 
-@media (min-width: 720px) {
-  .writing-entry {
-    grid-template-columns: minmax(0, 240px) minmax(0, 1fr);
-    align-items: start;
-    gap: 1.25rem;
-  }
-
-  .writing-entry-media img {
-    max-height: 11rem;
-    min-height: 9rem;
-  }
+.writing-entry-actions {
+  margin: 0;
 }
 

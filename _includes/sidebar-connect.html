@@ -6,11 +6,14 @@
   <p class="view"><a href="{{ '/Writing/' | relative_url }}">{% include connect-icon.html name="writing" %}<span>Writing</span></a></p>
 
   <h2>Connect</h2>
-  <div class="linkedin-badge-wrap">
-    <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="HORIZONTAL" data-vanity="zlatko-lakisic" data-version="v1">
-      <a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/zlatko-lakisic?trk=profile-badge">Zlatko Lakisic</a>
-    </div>
-  </div>
+  <a class="linkedin-profile-card" href="https://www.linkedin.com/in/zlatko-lakisic/" rel="me noopener" target="_blank">
+    <img class="linkedin-profile-card__photo" src="{{ site.logo | relative_url }}" alt="" width="48" height="48" />
+    <span class="linkedin-profile-card__body">
+      <span class="linkedin-profile-card__brand">{% include connect-icon.html name="linkedin" %}<span>LinkedIn</span></span>
+      <span class="linkedin-profile-card__name">Zlatko Lakisic</span>
+      <span class="linkedin-profile-card__cta">View profile →</span>
+    </span>
+  </a>
   <ul>
     <li><a href="mailto:zlatko.lakisic@gmail.com">{% include connect-icon.html name="email" %}<span>zlatko.lakisic@gmail.com</span></a></li>
     <li><a href="tel:+13366829871">{% include connect-icon.html name="phone" %}<span>336-682-9871</span></a></li>

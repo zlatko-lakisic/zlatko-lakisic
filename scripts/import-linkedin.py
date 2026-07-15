@@ -2,14 +2,17 @@
 """Import LinkedIn posts/articles into Writing/ for the portfolio site.
 
 Sources (in order):
-  1. RSS/Atom feed_url from linkedin.config.json (optional)
-  2. JSON files in linkedin-inbox/
-  3. URLs listed in linkedin-urls.txt
+  1. LinkedIn Posts API (optional — needs r_member_social or r_organization_social)
+  2. RSS/Atom feed_url from linkedin.config.json (optional)
+  3. JSON files in linkedin-inbox/
+  4. URLs listed in linkedin-urls.txt
 
 Fetches Open Graph metadata when needed, downloads cover images into
 assets/writing/, and regenerates Writing/README.md.
 
 Dedupes via scripts/linkedin-seen.json.
+
+See scripts/LINKEDIN-API.md for API setup and LinkedIn permission limits.
 """
 
 from __future__ import annotations
@@ -32,6 +35,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "scripts"))
 USER_AGENT = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
     "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
@@ -423,6 +427,43 @@ def download_image(image_url: str, dest_dir: Path, item_id: str) -> Optional[str
     return f"../assets/writing/{filename}"
 
 
+def load_api_items(config: Dict[str, Any], max_chars: int) -> List[Dict[str, Any]]:
+    api = config.get("api") or {}
+    if not api.get("enabled"):
+        return []
+    try:
+        from linkedin_api import LinkedInApiError, fetch_author_posts_as_items
+    except ImportError as exc:
+        print(f"LinkedIn API module unavailable: {exc}", file=sys.stderr)
+        return []
+
+    secrets = ROOT / api.get("secrets_file", "scripts/linkedin.secrets.json")
+    tokens = ROOT / api.get("tokens_file", "scripts/linkedin-tokens.json")
+    try:
+        items, msg = fetch_author_posts_as_items(
+            author_mode=api.get("author_mode", "member"),
+            organization_urn=(api.get("organization_urn") or "").strip(),
+            secrets_path=secrets,
+            tokens_path=tokens,
+            api_version=api.get("api_version", "202502"),
+            max_chars=max_chars,
+            count=int(api.get("count", 50)),
+        )
+        print(msg)
+        # Skip Open Graph re-enrichment; API already provided fields
+        for item in items:
+            item["_skip_enrich"] = True
+        return items
+    except LinkedInApiError as exc:
+        print(f"LinkedIn API source skipped: {exc}", file=sys.stderr)
+        print(
+            "Falling back to feed / inbox / linkedin-urls.txt. "
+            "See scripts/LINKEDIN-API.md.",
+            file=sys.stderr,
+        )
+        return []
+
+
 def normalize_item(raw: Dict[str, Any], max_chars: int, enrich: bool = True) -> Optional[Dict[str, Any]]:
     url = (raw.get("url") or raw.get("link") or "").strip()
     content = (raw.get("content") or raw.get("summary") or raw.get("description") or "").strip()
@@ -671,12 +712,14 @@ def collect_written_posts(output_dir: Path) -> List[Dict[str, Any]]:
 def write_index(output_dir: Path, profile_url: str, posts: List[Dict[str, Any]]) -> None:
     # No YAML front matter: GitHub Pages treats Writing/README.md as the folder index
     # (same pattern as Recommendations/). Front matter would publish only README.html.
+    # Emit HTML for entries — kramdown does not process Markdown nested inside HTML blocks.
+    snippet_chars = 160
     lines = [
         "# Writing",
         "",
         "[← Back to Main Portfolio](../index.md)",
         "",
-        "Selected LinkedIn posts and articles — full discussion stays on LinkedIn.",
+        "Selected LinkedIn posts and articles — read the full piece and comments on LinkedIn.",
         "",
         f'[Open LinkedIn profile →]({profile_url})',
         "",
@@ -692,33 +735,39 @@ def write_index(output_dir: Path, profile_url: str, posts: List[Dict[str, Any]])
         lines.append('<div class="writing-feed">')
         lines.append("")
         for post in posts:
+            title = html_lib.escape(post["title"])
+            blurb = excerpt_text(post.get("blurb") or "", snippet_chars)
+            blurb_html = html_lib.escape(blurb)
+            page_href = html_lib.escape(post.get("html_rel") or post["rel"].replace(".md", ".html"))
+            linkedin = (post.get("linkedin_url") or "").strip()
+            linkedin_href = html_lib.escape(linkedin)
+            # Prefer LinkedIn for title + primary CTA; local page is optional archive
+            primary_href = linkedin_href or page_href
+
             lines.append('<article class="writing-entry">')
-            lines.append("")
-            if post["image"]:
+            if post.get("image"):
                 lines.append(
-                    f'<a class="writing-entry-media" href="{html_lib.escape(post["rel"])}">'
+                    f'<a class="writing-entry-media" href="{primary_href}">'
                     f'<img src="{html_lib.escape(post["image"])}" alt="" /></a>'
                 )
-                lines.append("")
             lines.append('<div class="writing-entry-body">')
-            lines.append("")
             lines.append(
-                f'<p class="writing-meta"><time datetime="{post["date"]}">{post["date"]}</time>'
-                f' · {post["kind"].capitalize()}</p>'
+                f'<p class="writing-meta"><time datetime="{html_lib.escape(post["date"])}">'
+                f'{html_lib.escape(post["date"])}</time> · {html_lib.escape(post["kind"].capitalize())}</p>'
             )
-            lines.append("")
-            lines.append(f'### [{post["title"]}]({post["rel"]})')
-            lines.append("")
-            if post["blurb"]:
-                lines.append(post["blurb"])
-                lines.append("")
-            links = [f'[Read more →]({post["rel"]})']
-            if post["linkedin_url"]:
-                links.append(f'[Discuss on LinkedIn →]({post["linkedin_url"]})')
-            lines.append(" · ".join(links))
-            lines.append("")
+            lines.append(f'<h3><a href="{primary_href}">{title}</a></h3>')
+            if blurb_html:
+                lines.append(f"<p>{blurb_html}</p>")
+            actions = []
+            if linkedin:
+                actions.append(
+                    f'<a href="{linkedin_href}">Read full post on LinkedIn →</a>'
+                )
+            actions.append(f'<a href="{page_href}">Portfolio note →</a>')
+            lines.append(
+                '<p class="writing-entry-actions">' + " · ".join(actions) + "</p>"
+            )
             lines.append("</div>")
-            lines.append("")
             lines.append("</article>")
             lines.append("")
         lines.append("</div>")
@@ -784,6 +833,8 @@ def main() -> int:
     seen = set(state.get("ids") or [])
 
     candidates: List[Dict[str, Any]] = []
+    api_items = load_api_items(config, max_chars)
+    candidates.extend(api_items)
     candidates.extend(load_feed(feed_url, max_chars))
     inbox_items, inbox_sources = load_inbox(inbox_dir, max_chars)
     candidates.extend(inbox_items)
@@ -802,12 +853,14 @@ def main() -> int:
     else:
         new_items = [i for i in ordered if i["id"] not in seen]
 
-    if not feed_url and not inbox_items and not any(
+    urls_configured = any(
         line.strip() and not line.strip().startswith("#")
         for line in (urls_file.read_text(encoding="utf-8").splitlines() if urls_file.exists() else [])
-    ):
+    )
+    if not api_items and not feed_url and not inbox_items and not urls_configured:
         print("No sources configured.")
-        print("  • Set feed_url in scripts/linkedin.config.json, or")
+        print("  • Enable LinkedIn API in scripts/linkedin.config.json (see LINKEDIN-API.md), or")
+        print("  • Set feed_url, or")
         print("  • Drop *.json into scripts/linkedin-inbox/, or")
         print("  • Add post/article URLs to scripts/linkedin-urls.txt")
 

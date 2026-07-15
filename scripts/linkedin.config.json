@@ -7,5 +7,14 @@
   "urls_file": "scripts/linkedin-urls.txt",
   "assets_dir": "assets/writing",
   "download_images": true,
-  "excerpt_max_chars": 420
+  "excerpt_max_chars": 220,
+  "api": {
+    "enabled": false,
+    "author_mode": "member",
+    "organization_urn": "",
+    "api_version": "202502",
+    "count": 50,
+    "secrets_file": "scripts/linkedin.secrets.json",
+    "tokens_file": "scripts/linkedin-tokens.json"
+  }
 }

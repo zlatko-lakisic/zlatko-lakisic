@@ -365,8 +365,12 @@ def enrich_from_linkedin_page(url: str) -> Dict[str, str]:
     if m:
         published = m.group(1)
     kind = ""
-    if body or "article-cover" in image or "/pulse/" in url:
+    if "/pulse/" in url or "/newsletter/" in url:
         kind = "article"
+    elif "article-cover" in image:
+        kind = "article"
+    elif "feedshare" in image:
+        kind = "post"
     return {
         "title": title,
         "content": content,
@@ -494,7 +498,8 @@ def normalize_item(raw: Dict[str, Any], max_chars: int, enrich: bool = True) -> 
 
     title = fully_unescape(title)
     content = fully_unescape(content)
-    if not title:
+    # LinkedIn often puts only hashtags in og:title for short posts
+    if not title or re.fullmatch(r"(?:\s*#\w+)+", title or ""):
         title = title_from_content(content, kind)
     if not date:
         date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
@@ -705,7 +710,7 @@ def collect_written_posts(output_dir: Path) -> List[Dict[str, Any]]:
                 "html_rel": f"./{path.stem}.html",
             }
         )
-    posts.sort(key=lambda p: (p["date"], p["title"]), reverse=True)
+    posts.sort(key=lambda p: (p["date"] or "", p["title"] or ""), reverse=True)
     return posts
 
 

@@ -18,6 +18,6 @@ image_source: "https://media.licdn.com/dms/image/v2/D4E12AQG1cNZzdo8vOg/article-
 <img src="../assets/writing/activity-7445503405524959232.jpg" alt="From Static Infrastructure to Dynamic Intelligence: The Path to AGI Orchestration" />
 </figure>
 
-The Agentic Onramp to AGI 🧠 The era of the "Monolithic LLM" is evolving into the era of the Agentic System. 🤖 I’ve been diving deep into the roadmap toward AGI, and it is clear that the breakthrough isn't just about larger models ➜ it is about Orchestration. ⚙️ We are moving away from static pattern matchers and toward "Dynamic Crews" 🌐: small, specialized agents that form and dissolve in real-time to solve unique…
+The Agentic Onramp to AGI 🧠 The era of the "Monolithic LLM" is evolving into the era of the Agentic System. 🤖 I’ve been diving deep into the roadmap toward AGI, and it is clear that the breakthrough isn't just about…
 
 **[Continue the discussion on LinkedIn →](https://www.linkedin.com/posts/zlatko-lakisic_from-static-infrastructure-to-dynamic-intelligence-activity-7445503405524959232-e8c6)**

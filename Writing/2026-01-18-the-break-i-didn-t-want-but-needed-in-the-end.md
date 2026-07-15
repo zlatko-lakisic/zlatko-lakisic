@@ -18,6 +18,6 @@ image_source: "https://media.licdn.com/dms/image/v2/D4E12AQHkV9IVu6eckw/article-
 <img src="../assets/writing/activity-7418794317139320832.png" alt="The break I didn’t want, but needed in the end." />
 </figure>
 
-After experiencing the Verizon layoffs, I have redirected my efforts towards "repaying technical debt" at home. I am applying an outcome-first mindset to develop a "recycle-first" home automation project. Additionally, I am open-sourcing this journey on GitHub.
+After experiencing the Verizon layoffs, I have redirected my efforts towards "repaying technical debt" at home. I am applying an outcome-first mindset to develop a "recycle-first" home automation project. Additionally…
 
 **[Continue the discussion on LinkedIn →](https://www.linkedin.com/posts/zlatko-lakisic_the-break-i-didnt-want-but-needed-in-the-activity-7418794317139320832-eiQM)**

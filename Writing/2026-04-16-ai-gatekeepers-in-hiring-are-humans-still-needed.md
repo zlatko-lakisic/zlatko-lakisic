@@ -1,7 +1,7 @@
 ---
 title: "AI Gatekeepers in Hiring: Are Humans Still Needed?"
 date: 2026-04-16
-kind: article
+kind: post
 source: linkedin
 body_class: writing-page
 linkedin_url: "https://www.linkedin.com/posts/zlatko-lakisic_hiring-ai-futureofwork-activity-7450555997921632259-h23J"
@@ -12,12 +12,12 @@ image_source: "https://media.licdn.com/dms/image/v2/D4E22AQHHoWAIZJ6IaA/feedshar
 
 # AI Gatekeepers in Hiring: Are Humans Still Needed?
 
-<p class="writing-meta"><time datetime="2026-04-16">2026-04-16</time> · Article · <a href="https://www.linkedin.com/posts/zlatko-lakisic_hiring-ai-futureofwork-activity-7450555997921632259-h23J">View on LinkedIn</a></p>
+<p class="writing-meta"><time datetime="2026-04-16">2026-04-16</time> · Post · <a href="https://www.linkedin.com/posts/zlatko-lakisic_hiring-ai-futureofwork-activity-7450555997921632259-h23J">View on LinkedIn</a></p>
 
 <figure class="writing-cover">
 <img src="../assets/writing/activity-7450555997921632259.jpg" alt="AI Gatekeepers in Hiring: Are Humans Still Needed?" />
 </figure>
 
-The AI vs. AI Arms Race: Are We Still Hiring Humans? 🤖 vs 🤖 The current state of job seeking has officially entered the Twilight Zone. We’re living in a world where the workforce is naturally growing, leading to more applicants than ever. To manage the noise, companies have installed AI as the ultimate "gatekeeper" to summarize, categorize, and qualify candidates. But here’s the irony: Because we’re now being…
+The AI vs. AI Arms Race: Are We Still Hiring Humans? 🤖 vs 🤖 The current state of job seeking has officially entered the Twilight Zone. We’re living in a world where the workforce is naturally growing, leading to more…
 
 **[Continue the discussion on LinkedIn →](https://www.linkedin.com/posts/zlatko-lakisic_hiring-ai-futureofwork-activity-7450555997921632259-h23J)**

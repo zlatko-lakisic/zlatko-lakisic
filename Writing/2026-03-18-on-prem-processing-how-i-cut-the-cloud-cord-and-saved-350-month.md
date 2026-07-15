@@ -18,6 +18,6 @@ image_source: "https://media.licdn.com/dms/image/v2/D4E12AQFzmmGWTeLxsA/article-
 <img src="../assets/writing/activity-7440067004083884032.png" alt="On-Prem Processing: How I Cut the &quot;Cloud Cord&quot; and Saved $350/Month" />
 </figure>
 
-I cut the "Cloud Cord" and saved $350/month. 🔌💰 When my role at Verizon was eliminated during the 2025 layoffs, I audited our "digital tax." Between streaming, storage, accounting, and AI APIs, the subscriptions were endless. I decided to stop renting and start owning. Using Gemini, ChatGPT, and Cursor as my "junior engineers," I migrated our entire life on-prem: ✅ Media: Plex + OMV (Goodbye, streaming hikes). ✅…
+I cut the "Cloud Cord" and saved $350/month. 🔌💰 When my role at Verizon was eliminated during the 2025 layoffs, I audited our "digital tax." Between streaming, storage, accounting, and AI APIs, the subscriptions were…
 
 **[Continue the discussion on LinkedIn →](https://www.linkedin.com/posts/zlatko-lakisic_on-prem-processing-how-i-cut-the-cloud-activity-7440067004083884032-r-3_)**

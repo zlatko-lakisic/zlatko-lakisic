@@ -18,6 +18,6 @@ image_source: "https://media.licdn.com/dms/image/v2/D4E12AQHDW6zXvKl22w/article-
 <img src="../assets/writing/activity-7455072800836382720.png" alt="From Theory to Turf: Cutting the &quot;Green&quot; Cost of my $900 Water Bill with On-Prem AI" />
 </figure>
 
-$900 for a water bill? Not on my watch. 📉 Last summer, my garden was the most expensive "hobby" I owned. The culprit wasn't just the heat; it was "dumb" automation. I had a schedule, but I didn't have intelligence. I’ve just published a new article detailing how I applied an "Outcome-First" engineering mindset to my backyard. By integrating Home Assistant, Ollama, and Orbit BHyve, I’ve moved from static timers to a…
+$900 for a water bill? Not on my watch. 📉 Last summer, my garden was the most expensive "hobby" I owned. The culprit wasn't just the heat; it was "dumb" automation. I had a schedule, but I didn't have intelligence…
 
 **[Continue the discussion on LinkedIn →](https://www.linkedin.com/posts/zlatko-lakisic_from-theory-to-turf-cutting-the-green-activity-7455072800836382720-4JSz)**

@@ -16,7 +16,7 @@ Selected LinkedIn posts and articles — full discussion stays on LinkedIn.
 
 <p class="writing-meta"><time datetime="2026-04-29">2026-04-29</time> · Article</p>
 
-### [From Theory to Turf: Cutting the \"Green\" Cost of my $900 Water Bill with On-Prem AI](./2026-04-29-from-theory-to-turf-cutting-the-green-cost-of-my-900-water-bill-with-on.md)
+### [From Theory to Turf: Cutting the "Green" Cost of my $900 Water Bill with On-Prem AI](./2026-04-29-from-theory-to-turf-cutting-the-green-cost-of-my-900-water-bill-with-on.md)
 
 $900 for a water bill? Not on my watch. 📉 Last summer, my garden was the most expensive "hobby" I owned. The culprit wasn't just the heat; it was "dumb" automation. I had a schedule, but I didn't have intelligence. I’ve just published a new article detailing how I applied an "Outcome-First" engineering mindset to my backyard. By integrating Home Assistant, Ollama, and Orbit BHyve, I’ve moved from static timers to a…
 
@@ -70,7 +70,7 @@ The Agentic Onramp to AGI 🧠 The era of the "Monolithic LLM" is evolving into 
 
 <p class="writing-meta"><time datetime="2026-03-18">2026-03-18</time> · Article</p>
 
-### [On-Prem Processing: How I Cut the \"Cloud Cord\" and Saved $350/Month](./2026-03-18-on-prem-processing-how-i-cut-the-cloud-cord-and-saved-350-month.md)
+### [On-Prem Processing: How I Cut the "Cloud Cord" and Saved $350/Month](./2026-03-18-on-prem-processing-how-i-cut-the-cloud-cord-and-saved-350-month.md)
 
 I cut the "Cloud Cord" and saved $350/month. 🔌💰 When my role at Verizon was eliminated during the 2025 layoffs, I audited our "digital tax." Between streaming, storage, accounting, and AI APIs, the subscriptions were endless. I decided to stop renting and start owning. Using Gemini, ChatGPT, and Cursor as my "junior engineers," I migrated our entire life on-prem: ✅ Media: Plex + OMV (Goodbye, streaming hikes). ✅…
 

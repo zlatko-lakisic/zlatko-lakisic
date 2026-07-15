@@ -90,7 +90,13 @@ header p {
 }
 
 .sidebar-connect span {
-  word-break: break-word;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+/* Minimal pins footer over the fixed sidebar — we removed it in the layout */
+footer {
+  display: none;
 }
 
 .linkedin-profile-card {

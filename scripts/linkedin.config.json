@@ -1,0 +1,9 @@
+{
+  "profile_url": "https://www.linkedin.com/in/zlatko-lakisic/",
+  "feed_url": "",
+  "output_dir": "Writing",
+  "inbox_dir": "scripts/linkedin-inbox",
+  "state_file": "scripts/linkedin-seen.json",
+  "excerpt_max_chars": 420,
+  "urls_file": "scripts/linkedin-urls.txt"
+}

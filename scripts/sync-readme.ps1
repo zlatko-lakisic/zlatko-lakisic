@@ -22,6 +22,8 @@ $replacements = @(
     @{ Pattern = '\]\(\./Technical-Strategy\.md\)'; Replacement = "]($base/Technical-Strategy.md)" }
     @{ Pattern = '\]\(\./Recommendations/README\.md\)'; Replacement = "]($base/Recommendations/README.md)" }
     @{ Pattern = '\]\(\./Recommendations/([^)#]+)\)'; Replacement = "]($base/Recommendations/`$1)" }
+    @{ Pattern = '\]\(\./Writing/README\.md\)'; Replacement = "]($base/Writing/README.md)" }
+    @{ Pattern = '\]\(\./Writing/([^)#]+)\)'; Replacement = "]($base/Writing/`$1)" }
     @{ Pattern = '\]\(\./Projects\.md#([^)]+)\)'; Replacement = "]($base/Projects.md#`$1)" }
     @{ Pattern = '\]\(\./Projects\.md\)'; Replacement = "]($base/Projects.md)" }
     @{ Pattern = '\]\(\./Engineering/([^)#]+)\)'; Replacement = "]($base/Engineering/`$1)" }

@@ -55,16 +55,6 @@
 </article>
 
 <article class="writing-entry">
-<a class="writing-entry-media" href="https://www.linkedin.com/posts/zlatko-lakisic_success-motivation-activity-7435810686020063232-tM8C"><img src="../assets/writing/activity-7435810686020063232.jpg" alt="" /></a>
-<div class="writing-entry-body">
-<p class="writing-meta"><time datetime="2026-03-06">2026-03-06</time> · Post</p>
-<h3><a href="https://www.linkedin.com/posts/zlatko-lakisic_success-motivation-activity-7435810686020063232-tM8C">#success #motivation</a></h3>
-<p>Another one, let&#x27;s get it Adna ! 🚀📈 #success #motivation</p>
-<p class="writing-entry-actions"><a href="https://www.linkedin.com/posts/zlatko-lakisic_success-motivation-activity-7435810686020063232-tM8C">Read on LinkedIn →</a> · <a href="./2026-03-06-success-motivation.html">Archive →</a></p>
-</div>
-</article>
-
-<article class="writing-entry">
 <a class="writing-entry-media" href="https://www.linkedin.com/posts/zlatko-lakisic_kubernetes-automation-activity-7432915163198091264-ukcn"><img src="../assets/writing/activity-7432915163198091264.jpg" alt="" /></a>
 <div class="writing-entry-body">
 <p class="writing-meta"><time datetime="2026-02-26">2026-02-26</time> · Post</p>
@@ -75,32 +65,12 @@
 </article>
 
 <article class="writing-entry">
-<a class="writing-entry-media" href="https://www.linkedin.com/posts/zlatko-lakisic_kubernetes-automation-activity-7432915163198091264-ukcn"><img src="../assets/writing/activity-7432915163198091264.jpg" alt="" /></a>
-<div class="writing-entry-body">
-<p class="writing-meta"><time datetime="2026-02-26">2026-02-26</time> · Post</p>
-<h3><a href="https://www.linkedin.com/posts/zlatko-lakisic_kubernetes-automation-activity-7432915163198091264-ukcn">#kubernetes #automation</a></h3>
-<p>So proud of my wife Adna Z. ! Let&#x27;s get it! 🥳 #Kubernetes #Automation</p>
-<p class="writing-entry-actions"><a href="https://www.linkedin.com/posts/zlatko-lakisic_kubernetes-automation-activity-7432915163198091264-ukcn">Read on LinkedIn →</a> · <a href="./2026-02-26-kubernetes-automation.html">Archive →</a></p>
-</div>
-</article>
-
-<article class="writing-entry">
 <a class="writing-entry-media" href="https://www.linkedin.com/posts/zlatko-lakisic_volunteering-techforgood-socialimpact-activity-7420146096871653377-wYqb"><img src="../assets/writing/activity-7420146096871653377.jpg" alt="" /></a>
 <div class="writing-entry-body">
 <p class="writing-meta"><time datetime="2026-01-22">2026-01-22</time> · Post</p>
 <h3><a href="https://www.linkedin.com/posts/zlatko-lakisic_volunteering-techforgood-socialimpact-activity-7420146096871653377-wYqb">Transitioning between career chapters presents an excellent opportunity to give back</a></h3>
 <p>Transitioning between career chapters presents an excellent opportunity to give back. As I prepare for my next leadership role in technology innovation, I am…</p>
 <p class="writing-entry-actions"><a href="https://www.linkedin.com/posts/zlatko-lakisic_volunteering-techforgood-socialimpact-activity-7420146096871653377-wYqb">Read on LinkedIn →</a> · <a href="./2026-01-22-transitioning-between-career-chapters-presents-an-excellent-opportunity.html">Archive →</a></p>
-</div>
-</article>
-
-<article class="writing-entry">
-<a class="writing-entry-media" href="https://www.linkedin.com/posts/zlatko-lakisic_volunteering-techforgood-socialimpact-activity-7420146096871653377-wYqb"><img src="../assets/writing/activity-7420146096871653377.jpg" alt="" /></a>
-<div class="writing-entry-body">
-<p class="writing-meta"><time datetime="2026-01-22">2026-01-22</time> · Post</p>
-<h3><a href="https://www.linkedin.com/posts/zlatko-lakisic_volunteering-techforgood-socialimpact-activity-7420146096871653377-wYqb">#volunteering #techforgood #socialimpact #leadership #opentowork #innovation #givingback #probono</a></h3>
-<p>Transitioning between career chapters presents an excellent opportunity to give back. As I prepare for my next leadership role in technology innovation, I am…</p>
-<p class="writing-entry-actions"><a href="https://www.linkedin.com/posts/zlatko-lakisic_volunteering-techforgood-socialimpact-activity-7420146096871653377-wYqb">Read on LinkedIn →</a> · <a href="./2026-01-22-volunteering-techforgood-socialimpact-leadership-opentowork-innovation-g.html">Archive →</a></p>
 </div>
 </article>
 

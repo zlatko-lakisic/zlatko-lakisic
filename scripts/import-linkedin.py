@@ -609,8 +609,20 @@ def write_post(output_dir: Path, item: Dict[str, Any]) -> Path:
     slug = slugify(item["title"], fallback=f"linkedin-{item['id'][:8]}")
     filename = f"{date}-{slug}.md"
     path = output_dir / filename
+
+    # Drop older files for the same import_id (title/slug may have changed)
+    for existing in output_dir.glob("*.md"):
+        if existing.name == "README.md" or existing == path:
+            continue
+        try:
+            text = existing.read_text(encoding="utf-8")
+        except OSError:
+            continue
+        if f'import_id: "{item["id"]}"' in text or f"import_id: {item['id']}" in text:
+            existing.unlink()
+            print(f"Replaced {existing.relative_to(ROOT)}")
+
     if path.exists():
-        # Same import id → overwrite; different id → suffix
         existing = path.read_text(encoding="utf-8")
         if f'import_id: "{item["id"]}"' not in existing and f"import_id: {item['id']}" not in existing:
             path = output_dir / f"{date}-{slug}-{item['id'][:6]}.md"

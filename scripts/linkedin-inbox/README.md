@@ -20,4 +20,4 @@ Prefer configuring `feed_url` in `scripts/linkedin.config.json` (e.g. from [RSS.
 
 Or paste post/article permalinks into `scripts/linkedin-urls.txt` (profile URLs are not enough).
 
-See `demo-seed.example.json` for the inbox JSON shape (ignored by the importer). Cover images are downloaded into `assets/writing/`.
+For official API access (when LinkedIn grants post-read scopes), see `scripts/LINKEDIN-API.md`.

@@ -93,6 +93,21 @@ header p {
   word-break: break-word;
 }
 
+.linkedin-badge-wrap {
+  margin: 0 0 1rem;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.linkedin-badge-wrap .LI-profile-badge,
+.linkedin-badge-wrap .profile-badge {
+  max-width: 100%;
+}
+
+.linkedin-badge-wrap iframe {
+  max-width: 100% !important;
+}
+
 section {
   line-height: 1.6;
 }

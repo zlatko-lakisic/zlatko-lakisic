@@ -1,8 +1,3 @@
----
-title: "Writing"
-body_class: writing-page
----
-
 # Writing
 
 [← Back to Main Portfolio](../index.md)

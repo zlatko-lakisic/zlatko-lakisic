@@ -666,12 +666,9 @@ def collect_written_posts(output_dir: Path) -> List[Dict[str, Any]]:
 
 
 def write_index(output_dir: Path, profile_url: str, posts: List[Dict[str, Any]]) -> None:
+    # No YAML front matter: GitHub Pages treats Writing/README.md as the folder index
+    # (same pattern as Recommendations/). Front matter would publish only README.html.
     lines = [
-        "---",
-        'title: "Writing"',
-        "body_class: writing-page",
-        "---",
-        "",
         "# Writing",
         "",
         "[← Back to Main Portfolio](../index.md)",

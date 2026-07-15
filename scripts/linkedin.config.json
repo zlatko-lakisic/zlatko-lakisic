@@ -4,6 +4,8 @@
   "output_dir": "Writing",
   "inbox_dir": "scripts/linkedin-inbox",
   "state_file": "scripts/linkedin-seen.json",
-  "excerpt_max_chars": 420,
-  "urls_file": "scripts/linkedin-urls.txt"
+  "urls_file": "scripts/linkedin-urls.txt",
+  "assets_dir": "assets/writing",
+  "download_images": true,
+  "excerpt_max_chars": 420
 }

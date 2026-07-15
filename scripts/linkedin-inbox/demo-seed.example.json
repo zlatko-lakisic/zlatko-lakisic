@@ -1,29 +1,11 @@
 [
   {
-    "id": "demo-connected-care-2026-06",
-    "demo": true,
-    "kind": "article",
-    "title": "Private networks for connected care: what health systems actually need",
-    "url": "https://www.linkedin.com/in/zlatko-lakisic/",
-    "date": "2026-06-18",
-    "content": "Hospital connectivity fails for boring reasons — VLAN sprawl, unsegmented device fleets, and no clear path from bedside telemetry to secure clinical workflows. Private wireless and FWA help when the architecture starts with identity, segmentation, and operational ownership — not a radio SKU."
-  },
-  {
-    "id": "demo-mcp-boundary-2026-07",
-    "demo": true,
+    "id": "optional-stable-id",
     "kind": "post",
-    "title": "MCP is an integration boundary, not a chatbot feature",
-    "url": "https://www.linkedin.com/in/zlatko-lakisic/",
-    "date": "2026-07-02",
-    "content": "Treating Model Context Protocol as 'plugins for the LLM' misses the point. The durable value is credential-scoped tool catalogs, explicit trust zones, and the same API governance muscle enterprises already use for service meshes — applied to agent workflows."
-  },
-  {
-    "id": "demo-presales-architecture-2026-07",
-    "demo": true,
-    "kind": "post",
-    "title": "Presales that survive architecture review",
-    "url": "https://www.linkedin.com/in/zlatko-lakisic/",
-    "date": "2026-07-10",
-    "content": "The fastest way to lose a healthcare deal after verbal commitment is a slide that cannot answer constraints: clinical uptime, identity boundaries, and who operates the network at 2 a.m. Map the customer's failure modes before you map the product features."
+    "title": "Optional override title",
+    "url": "https://www.linkedin.com/posts/you_your-slug-activity-1234567890-AbCd",
+    "date": "2026-07-01",
+    "content": "Optional body if you do not want Open Graph text.",
+    "image": "https://media.licdn.com/dms/image/…"
   }
 ]

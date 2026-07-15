@@ -18,4 +18,6 @@ After a successful import, files are moved to `processed/`.
 
 Prefer configuring `feed_url` in `scripts/linkedin.config.json` (e.g. from [RSS.app](https://rss.app/)) so new posts arrive without manual drops.
 
-See `demo-seed.example.json` for the expected shape (ignored by the importer).
+Or paste post/article permalinks into `scripts/linkedin-urls.txt` (profile URLs are not enough).
+
+See `demo-seed.example.json` for the inbox JSON shape (ignored by the importer). Cover images are downloaded into `assets/writing/`.

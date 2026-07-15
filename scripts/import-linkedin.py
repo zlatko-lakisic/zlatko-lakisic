@@ -6,18 +6,25 @@ Sources (in order):
   2. JSON files in linkedin-inbox/
   3. URLs listed in linkedin-urls.txt
 
-Dedupes via scripts/linkedin-seen.json. Regenerates Writing/README.md.
+Fetches Open Graph metadata when needed, downloads cover images into
+assets/writing/, and regenerates Writing/README.md.
+
+Dedupes via scripts/linkedin-seen.json.
 """
 
 from __future__ import annotations
 
 import argparse
+import codecs
 import hashlib
+import html as html_lib
 import json
+import mimetypes
 import re
 import shutil
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
@@ -25,7 +32,15 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 ROOT = Path(__file__).resolve().parent.parent
-USER_AGENT = "zlatko-lakisic-portfolio-linkedin-import/1.0 (+https://github.com/zlatko-lakisic/zlatko-lakisic)"
+USER_AGENT = (
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+)
+
+PERMALINK_RE = re.compile(
+    r"linkedin\.com/(posts|pulse|newsletter)/|/feed/update/|ugcPost",
+    re.I,
+)
 
 
 def load_config(path: Path) -> Dict[str, Any]:
@@ -49,24 +64,38 @@ def save_state(path: Path, state: Dict[str, Any]) -> None:
         f.write("\n")
 
 
-def fetch(url: str, timeout: int = 30) -> bytes:
-    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Accept": "*/*"})
+def fetch(url: str, timeout: int = 45) -> Tuple[bytes, str]:
+    req = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": USER_AGENT,
+            "Accept": "*/*",
+            "Accept-Language": "en-US,en;q=0.9",
+        },
+    )
     with urllib.request.urlopen(req, timeout=timeout) as resp:
-        return resp.read()
+        ctype = (resp.headers.get("Content-Type") or "").split(";")[0].strip().lower()
+        return resp.read(), ctype
 
 
 def slugify(text: str, fallback: str = "linkedin-post") -> str:
-    text = text.strip().lower()
+    text = html_lib.unescape(text.strip().lower())
     text = re.sub(r"[^a-z0-9]+", "-", text)
     text = text.strip("-")
     return (text[:72] or fallback).rstrip("-")
 
 
+def is_permalink(url: str) -> bool:
+    return bool(url and PERMALINK_RE.search(url))
+
+
 def stable_id(url: str, title: str = "", date: str = "", content: str = "") -> str:
     url = (url or "").strip()
-    # Distinct post/article permalinks are enough; profile landing pages are not.
-    if url and re.search(r"/(posts|pulse|newsletter|feed/update|ugcPost)/", url, re.I):
-        raw = url
+    if is_permalink(url):
+        m = re.search(r"activity-(\d+)", url)
+        if m:
+            return f"activity-{m.group(1)}"
+        raw = url.split("?")[0]
     else:
         raw = f"{url}|{title}|{date}|{(content or '')[:120]}"
     return hashlib.sha1(raw.encode("utf-8")).hexdigest()[:16]
@@ -97,7 +126,7 @@ def parse_date(value: Optional[str]) -> str:
 
 
 def excerpt_text(text: str, max_chars: int) -> str:
-    text = re.sub(r"\s+", " ", (text or "").strip())
+    text = re.sub(r"\s+", " ", html_lib.unescape((text or "").strip()))
     if len(text) <= max_chars:
         return text
     cut = text[: max_chars - 1].rsplit(" ", 1)[0]
@@ -111,12 +140,7 @@ def title_from_content(content: str, kind: str) -> str:
     first = content.split(". ", 1)[0].strip()
     if len(first) > 90:
         first = excerpt_text(first, 90)
-    if not first.endswith((".", "!", "?")):
-        # keep as headline fragment
-        pass
-    else:
-        first = first.rstrip(".")
-    return first
+    return first.rstrip(".")
 
 
 def local_name(tag: str) -> str:
@@ -138,20 +162,45 @@ def text_of(el: Optional[ET.Element]) -> str:
     return re.sub(r"\s+", " ", " ".join(parts)).strip()
 
 
+def first_img_src(html_fragment: str) -> str:
+    m = re.search(r'<img[^>]+src=["\']([^"\']+)["\']', html_fragment or "", re.I)
+    return html_lib.unescape(m.group(1)) if m else ""
+
+
 def parse_feed(xml_bytes: bytes) -> List[Dict[str, Any]]:
     root = ET.fromstring(xml_bytes)
     items: List[Dict[str, Any]] = []
     root_name = local_name(root.tag).lower()
 
+    def add_item(
+        title: str,
+        link: str,
+        desc_html: str,
+        pub: str,
+        guid: str,
+        image: str = "",
+    ) -> None:
+        items.append(
+            {
+                "title": title,
+                "url": link or guid,
+                "date": parse_date(pub),
+                "content": strip_html(desc_html),
+                "image": image or first_img_src(desc_html),
+                "kind": (
+                    "article"
+                    if "/pulse/" in (link or "") or "/newsletter/" in (link or "")
+                    else "post"
+                ),
+                "id": guid or None,
+            }
+        )
+
     if root_name == "rss":
         channel = next((c for c in root if local_name(c.tag) == "channel"), root)
         entries = [c for c in channel if local_name(c.tag) == "item"]
         for entry in entries:
-            title = ""
-            link = ""
-            desc = ""
-            pub = ""
-            guid = ""
+            title = link = desc = pub = guid = image = ""
             for child in entry:
                 name = local_name(child.tag).lower()
                 if name == "title":
@@ -159,31 +208,33 @@ def parse_feed(xml_bytes: bytes) -> List[Dict[str, Any]]:
                 elif name == "link":
                     link = (child.text or "").strip()
                 elif name in ("description", "summary", "content", "encoded"):
-                    desc = text_of(child) or desc
+                    inner = "".join(
+                        [child.text or ""]
+                        + [ET.tostring(c, encoding="unicode") for c in list(child)]
+                        + ([child.tail] if child.tail else [])
+                    )
+                    if not desc or name in ("encoded", "content"):
+                        desc = inner or text_of(child)
                 elif name in ("pubdate", "published", "updated", "date"):
                     pub = (child.text or "").strip()
                 elif name == "guid":
                     guid = (child.text or "").strip()
-            items.append(
-                {
-                    "title": title,
-                    "url": link or guid,
-                    "date": parse_date(pub),
-                    "content": desc,
-                    "kind": "article" if "/pulse/" in (link or "") or "/newsletter/" in (link or "") else "post",
-                    "id": guid or None,
-                }
-            )
+                elif name == "enclosure":
+                    enc = child.attrib.get("url", "")
+                    etype = child.attrib.get("type", "")
+                    if enc and (etype.startswith("image/") or re.search(r"\.(jpe?g|png|webp|gif)(\?|$)", enc, re.I)):
+                        image = enc
+                elif name in ("content", "thumbnail"):
+                    # media:content / media:thumbnail
+                    href = child.attrib.get("url") or child.attrib.get("href") or ""
+                    if href and not image:
+                        image = href
+            add_item(title, link, desc, pub, guid, image)
         return items
 
-    # Atom
     entries = [c for c in root if local_name(c.tag) == "entry"]
     for entry in entries:
-        title = ""
-        link = ""
-        desc = ""
-        pub = ""
-        entry_id = ""
+        title = link = desc = pub = entry_id = image = ""
         for child in entry:
             name = local_name(child.tag).lower()
             if name == "title":
@@ -192,76 +243,228 @@ def parse_feed(xml_bytes: bytes) -> List[Dict[str, Any]]:
                 href = child.attrib.get("href", "").strip()
                 rel = child.attrib.get("rel", "alternate")
                 if href and (rel == "alternate" or not link):
-                    link = href
+                    if child.attrib.get("type", "").startswith("image/") and not image:
+                        image = href
+                    elif rel in ("alternate", ""):
+                        link = href
+                elif rel == "enclosure" and href and not image:
+                    image = href
             elif name in ("summary", "content"):
-                desc = text_of(child) or desc
+                desc = ET.tostring(child, encoding="unicode") if list(child) else (child.text or "")
+                desc = desc or text_of(child)
             elif name in ("published", "updated"):
                 if not pub or name == "published":
                     pub = (child.text or "").strip()
             elif name == "id":
                 entry_id = (child.text or "").strip()
-        items.append(
-            {
-                "title": title,
-                "url": link or entry_id,
-                "date": parse_date(pub),
-                "content": desc,
-                "kind": "article" if "/pulse/" in (link or "") or "/newsletter/" in (link or "") else "post",
-                "id": entry_id or None,
-            }
-        )
+            elif name in ("content", "thumbnail"):
+                href = child.attrib.get("url") or child.attrib.get("href") or ""
+                if href and not image:
+                    image = href
+        add_item(title, link, desc, pub, entry_id, image)
     return items
 
 
-def strip_html(html: str) -> str:
-    html = re.sub(r"(?is)<script.*?>.*?</script>", " ", html)
-    html = re.sub(r"(?is)<style.*?>.*?</style>", " ", html)
-    html = re.sub(r"(?s)<[^>]+>", " ", html)
-    html = re.sub(r"&nbsp;", " ", html)
-    html = re.sub(r"&amp;", "&", html)
-    html = re.sub(r"&quot;", '"', html)
-    html = re.sub(r"&#39;", "'", html)
-    html = re.sub(r"&lt;", "<", html)
-    html = re.sub(r"&gt;", ">", html)
-    return re.sub(r"\s+", " ", html).strip()
+def strip_html(fragment: str) -> str:
+    fragment = re.sub(r"(?is)<script.*?>.*?</script>", " ", fragment or "")
+    fragment = re.sub(r"(?is)<style.*?>.*?</style>", " ", fragment)
+    fragment = re.sub(r"(?s)<[^>]+>", " ", fragment)
+    fragment = html_lib.unescape(fragment)
+    return re.sub(r"\s+", " ", fragment).strip()
 
 
-def meta_from_html(html: str) -> Tuple[str, str]:
-    def find_meta(*names: str) -> str:
-        for name in names:
-            patterns = [
-                rf'<meta[^>]+property=["\']{re.escape(name)}["\'][^>]+content=["\']([^"\']+)["\']',
-                rf'<meta[^>]+content=["\']([^"\']+)["\'][^>]+property=["\']{re.escape(name)}["\']',
-                rf'<meta[^>]+name=["\']{re.escape(name)}["\'][^>]+content=["\']([^"\']+)["\']',
-                rf'<meta[^>]+content=["\']([^"\']+)["\'][^>]+name=["\']{re.escape(name)}["\']',
-            ]
-            for pat in patterns:
-                m = re.search(pat, html, re.I)
-                if m:
-                    return strip_html(m.group(1))
-        return ""
-
-    title = find_meta("og:title", "twitter:title")
-    if not title:
-        m = re.search(r"<title[^>]*>(.*?)</title>", html, re.I | re.S)
-        title = strip_html(m.group(1)) if m else ""
-    desc = find_meta("og:description", "description", "twitter:description")
-    return title, desc
+def find_meta(html: str, *names: str) -> str:
+    for name in names:
+        patterns = [
+            rf'<meta[^>]+property=["\']{re.escape(name)}["\'][^>]+content=["\']([^"\']+)["\']',
+            rf'<meta[^>]+content=["\']([^"\']+)["\'][^>]+property=["\']{re.escape(name)}["\']',
+            rf'<meta[^>]+name=["\']{re.escape(name)}["\'][^>]+content=["\']([^"\']+)["\']',
+            rf'<meta[^>]+content=["\']([^"\']+)["\'][^>]+name=["\']{re.escape(name)}["\']',
+        ]
+        for pat in patterns:
+            m = re.search(pat, html, re.I)
+            if m:
+                return html_lib.unescape(m.group(1).strip())
+    return ""
 
 
-def normalize_item(raw: Dict[str, Any], max_chars: int) -> Optional[Dict[str, Any]]:
+def fully_unescape(value: str) -> str:
+    prev = None
+    cur = value or ""
+    while prev != cur:
+        prev = cur
+        cur = html_lib.unescape(cur)
+    return cur.strip()
+
+
+def decode_escaped_json_string(raw: str) -> str:
+    try:
+        return json.loads(f'"{raw}"')
+    except json.JSONDecodeError:
+        try:
+            return codecs.decode(raw, "unicode_escape")
+        except Exception:
+            return raw
+
+
+def extract_linkedin_body(page: str) -> str:
+    # Prefer visible commentary HTML (already UTF-8) over JSON strings.
+    html_patterns = [
+        r'data-test-id="main-feed-activity-card__commentary"[^>]*>(.*?)</div>',
+        r'class="[^"]*break-words[^"]*"[^>]*>(.*?)</(?:p|div|span)>',
+    ]
+    for pat in html_patterns:
+        m = re.search(pat, page, re.I | re.S)
+        if not m:
+            continue
+        text = fully_unescape(strip_html(m.group(1)))
+        if len(text) > 40:
+            return text
+
+    json_patterns = [
+        r'"articleBody"\s*:\s*"((?:\\.|[^"\\])*)"',
+        r'"commentary"\s*:\s*\{\s*"text"\s*:\s*"((?:\\.|[^"\\])*)"',
+    ]
+    for pat in json_patterns:
+        m = re.search(pat, page, re.I | re.S)
+        if not m:
+            continue
+        text = fully_unescape(strip_html(decode_escaped_json_string(m.group(1))))
+        if len(text) > 40:
+            return text
+    return ""
+
+
+def enrich_from_linkedin_page(url: str) -> Dict[str, str]:
+    """Pull title, description, image, and published date from a LinkedIn permalink."""
+    out = {"title": "", "content": "", "image": "", "date": "", "canonical": url, "kind": ""}
+    try:
+        raw, _ = fetch(url)
+        page = raw.decode("utf-8", errors="replace")
+    except (urllib.error.URLError, TimeoutError, OSError) as exc:
+        print(f"Could not fetch LinkedIn page {url}: {exc}", file=sys.stderr)
+        return out
+
+    title = fully_unescape(find_meta(page, "og:title", "twitter:title"))
+    if title:
+        title = re.sub(r"\s*\|\s*LinkedIn\s*$", "", title)
+        title = re.sub(r"\s*\|\s*Zlatko Lakisic.*$", "", title, flags=re.I)
+        title = re.sub(r"\s*posted on the topic.*$", "", title, flags=re.I)
+        title = title.strip(" |")
+    body = extract_linkedin_body(page)
+    desc = fully_unescape(find_meta(page, "og:description", "description", "twitter:description"))
+    content = body or desc
+    image = fully_unescape(find_meta(page, "og:image", "twitter:image"))
+    canonical = find_meta(page, "og:url") or url
+    published = ""
+    m = re.search(r'"datePublished"\s*:\s*"([^"]+)"', page)
+    if m:
+        published = m.group(1)
+    kind = ""
+    if body or "article-cover" in image or "/pulse/" in url:
+        kind = "article"
+    return {
+        "title": title,
+        "content": content,
+        "image": image,
+        "date": parse_date(published) if published else "",
+        "canonical": canonical.split("?")[0],
+        "kind": kind,
+    }
+
+
+def guess_ext(url: str, ctype: str) -> str:
+    path = urllib.parse.urlparse(url).path
+    ext = Path(path).suffix.lower()
+    if ext in {".jpg", ".jpeg", ".png", ".webp", ".gif"}:
+        return ext
+    if ctype in mimetypes.types_map.values() or True:
+        by_type = {
+            "image/jpeg": ".jpg",
+            "image/jpg": ".jpg",
+            "image/png": ".png",
+            "image/webp": ".webp",
+            "image/gif": ".gif",
+        }
+        if ctype in by_type:
+            return by_type[ctype]
+    return ".jpg"
+
+
+def download_image(image_url: str, dest_dir: Path, item_id: str) -> Optional[str]:
+    """Download cover image; return site-relative path like ../assets/writing/...."""
+    if not image_url:
+        return None
+    image_url = html_lib.unescape(image_url.strip())
+    dest_dir.mkdir(parents=True, exist_ok=True)
+    try:
+        data, ctype = fetch(image_url)
+    except (urllib.error.URLError, TimeoutError, OSError) as exc:
+        print(f"Image download failed ({image_url[:80]}…): {exc}", file=sys.stderr)
+        return None
+    if not data or not ctype.startswith("image/") and data[:8] != b"\x89PNG\r\n\x1a\n" and data[:2] != b"\xff\xd8":
+        # still accept if magic looks like image
+        if not (data.startswith(b"\x89PNG") or data.startswith(b"\xff\xd8") or data.startswith(b"RIFF") or data.startswith(b"GIF8")):
+            print(f"Skip non-image response for {image_url[:80]}… ({ctype})", file=sys.stderr)
+            return None
+    ext = guess_ext(image_url, ctype)
+    if data.startswith(b"\x89PNG"):
+        ext = ".png"
+    elif data.startswith(b"\xff\xd8"):
+        ext = ".jpg"
+    elif data.startswith(b"GIF8"):
+        ext = ".gif"
+    elif data.startswith(b"RIFF"):
+        ext = ".webp"
+    filename = f"{slugify(item_id, fallback='linkedin-image')}{ext}"
+    path = dest_dir / filename
+    path.write_bytes(data)
+    # Path relative from Writing/*.md
+    return f"../assets/writing/{filename}"
+
+
+def normalize_item(raw: Dict[str, Any], max_chars: int, enrich: bool = True) -> Optional[Dict[str, Any]]:
     url = (raw.get("url") or raw.get("link") or "").strip()
     content = (raw.get("content") or raw.get("summary") or raw.get("description") or "").strip()
     content = strip_html(content)
-    kind = (raw.get("kind") or "post").strip().lower()
+    image = (raw.get("image") or raw.get("image_url") or "").strip()
+    kind = (raw.get("kind") or "").strip().lower()
+    if not kind:
+        kind = "article" if "/pulse/" in url or "article-cover" in image else "post"
     if kind not in ("post", "article"):
         kind = "article" if "article" in kind else "post"
-    title = (raw.get("title") or "").strip()
+    title = fully_unescape((raw.get("title") or "").strip())
+    date = ""
+    if raw.get("date") or raw.get("published") or raw.get("pubDate"):
+        date = parse_date(raw.get("date") or raw.get("published") or raw.get("pubDate"))
+
+    if enrich and url and is_permalink(url):
+        needs = (not title) or (not content) or (not image) or (not date)
+        if needs or raw.get("enrich", True):
+            meta = enrich_from_linkedin_page(url)
+            title = title or meta["title"]
+            content = content or meta["content"]
+            image = image or meta["image"]
+            date = date or meta["date"]
+            if meta.get("kind"):
+                kind = meta["kind"]
+            if meta.get("canonical") and is_permalink(meta["canonical"]):
+                url = meta["canonical"]
+
+    title = fully_unescape(title)
+    content = fully_unescape(content)
     if not title:
         title = title_from_content(content, kind)
-    date = parse_date(raw.get("date") or raw.get("published") or raw.get("pubDate"))
+    if not date:
+        date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     if not url and not content:
         return None
+    if url and not is_permalink(url):
+        print(
+            f"Warning: not a post/article permalink (will still import): {url}",
+            file=sys.stderr,
+        )
+
     item_id = (raw.get("id") or "").strip() or stable_id(url, title, date, content)
     return {
         "id": item_id,
@@ -271,7 +474,8 @@ def normalize_item(raw: Dict[str, Any], max_chars: int) -> Optional[Dict[str, An
         "content": content,
         "excerpt": excerpt_text(content, max_chars) if content else "",
         "kind": kind,
-        "demo": bool(raw.get("demo")),
+        "image": image,
+        "image_local": (raw.get("image_local") or "").strip(),
     }
 
 
@@ -311,33 +515,18 @@ def load_urls_file(path: Path, max_chars: int) -> List[Dict[str, Any]]:
         line = line.strip()
         if not line or line.startswith("#"):
             continue
-        title, desc = "", ""
-        try:
-            html = fetch(line).decode("utf-8", errors="replace")
-            title, desc = meta_from_html(html)
-        except (urllib.error.URLError, TimeoutError, OSError) as exc:
-            print(f"Could not fetch metadata for {line}: {exc}", file=sys.stderr)
         kind = "article" if "/pulse/" in line or "/newsletter/" in line else "post"
-        items.append(
-            normalize_item(
-                {
-                    "title": title,
-                    "url": line,
-                    "content": desc,
-                    "kind": kind,
-                    "date": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
-                },
-                max_chars,
-            )
-        )
-    return [i for i in items if i]
+        item = normalize_item({"url": line, "kind": kind}, max_chars, enrich=True)
+        if item:
+            items.append(item)
+    return items
 
 
 def load_feed(feed_url: str, max_chars: int) -> List[Dict[str, Any]]:
     if not feed_url or not feed_url.strip():
         return []
     try:
-        raw = fetch(feed_url.strip())
+        raw, _ = fetch(feed_url.strip())
     except (urllib.error.URLError, TimeoutError, OSError) as exc:
         print(f"Feed fetch failed: {exc}", file=sys.stderr)
         return []
@@ -348,15 +537,25 @@ def load_feed(feed_url: str, max_chars: int) -> List[Dict[str, Any]]:
         return []
     items = []
     for raw_item in parsed:
-        item = normalize_item(raw_item, max_chars)
+        # Enrich when feed lacks image/permalink fidelity
+        item = normalize_item(raw_item, max_chars, enrich=is_permalink(raw_item.get("url") or ""))
         if item and item["url"]:
             items.append(item)
     return items
 
 
 def yaml_escape(value: str) -> str:
-    value = value.replace("\\", "\\\\").replace('"', '\\"')
-    return value
+    return (value or "").replace("\\", "\\\\").replace('"', '\\"')
+
+
+def attach_images(items: List[Dict[str, Any]], assets_dir: Path, download: bool) -> None:
+    for item in items:
+        if item.get("image_local"):
+            continue
+        if download and item.get("image"):
+            local = download_image(item["image"], assets_dir, item["id"])
+            if local:
+                item["image_local"] = local
 
 
 def write_post(output_dir: Path, item: Dict[str, Any]) -> Path:
@@ -364,9 +563,15 @@ def write_post(output_dir: Path, item: Dict[str, Any]) -> Path:
     slug = slugify(item["title"], fallback=f"linkedin-{item['id'][:8]}")
     filename = f"{date}-{slug}.md"
     path = output_dir / filename
-    # Avoid clobbering different ids that slug-collide
     if path.exists():
-        path = output_dir / f"{date}-{slug}-{item['id'][:6]}.md"
+        # Same import id → overwrite; different id → suffix
+        existing = path.read_text(encoding="utf-8")
+        if f'import_id: "{item["id"]}"' not in existing and f"import_id: {item['id']}" not in existing:
+            path = output_dir / f"{date}-{slug}-{item['id'][:6]}.md"
+
+    image_src = item.get("image_local") or ""
+    image_remote = item.get("image") or ""
+    display_image = image_src or image_remote
 
     lines = [
         "---",
@@ -374,26 +579,37 @@ def write_post(output_dir: Path, item: Dict[str, Any]) -> Path:
         f"date: {date}",
         f"kind: {item['kind']}",
         "source: linkedin",
+        "body_class: writing-page",
         f'linkedin_url: "{yaml_escape(item["url"])}"' if item["url"] else 'linkedin_url: ""',
         f'import_id: "{item["id"]}"',
     ]
-    if item.get("demo"):
-        lines.append("demo: true")
+    if display_image:
+        lines.append(f'image: "{yaml_escape(display_image)}"')
+    if image_remote and image_src:
+        lines.append(f'image_source: "{yaml_escape(image_remote)}"')
     lines.append("---")
     lines.append("")
-    lines.append(f"# {item['title']}")
+    lines.append(f'# {item["title"]}')
     lines.append("")
-    if item.get("demo"):
-        lines.append("> Sample import for preview — replace by configuring `feed_url` or dropping real items into `scripts/linkedin-inbox/`.")
+    lines.append(
+        f'<p class="writing-meta"><time datetime="{date}">{date}</time> · {item["kind"].capitalize()} · '
+        f'<a href="{html_lib.escape(item["url"])}">View on LinkedIn</a></p>'
+        if item["url"]
+        else f'<p class="writing-meta"><time datetime="{date}">{date}</time> · {item["kind"].capitalize()}</p>'
+    )
+    lines.append("")
+    if display_image:
+        lines.append('<figure class="writing-cover">')
+        lines.append(
+            f'<img src="{html_lib.escape(display_image)}" alt="{html_lib.escape(item["title"])}" />'
+        )
+        lines.append("</figure>")
         lines.append("")
     if item["excerpt"]:
         lines.append(item["excerpt"])
         lines.append("")
     if item["url"]:
-        lines.append(f"**[Discuss on LinkedIn →]({item['url']})**")
-        lines.append("")
-    else:
-        lines.append("*No LinkedIn URL provided for this item.*")
+        lines.append(f'**[Continue the discussion on LinkedIn →]({item["url"]})**')
         lines.append("")
     path.write_text("\n".join(lines), encoding="utf-8")
     return path
@@ -404,7 +620,7 @@ def collect_written_posts(output_dir: Path) -> List[Dict[str, Any]]:
     if not output_dir.exists():
         return posts
     for path in output_dir.glob("*.md"):
-        if path.name.upper() == "README.MD" or path.name == "README.md":
+        if path.name == "README.md":
             continue
         text = path.read_text(encoding="utf-8")
         if not text.startswith("---"):
@@ -419,13 +635,18 @@ def collect_written_posts(output_dir: Path) -> List[Dict[str, Any]]:
             key, val = line.split(":", 1)
             meta[key.strip()] = val.strip().strip('"')
         body = parts[2].strip()
-        # first non-heading, non-blockquote paragraph as blurb
         blurb = ""
         for para in re.split(r"\n\s*\n", body):
             para = para.strip()
-            if not para or para.startswith("#") or para.startswith(">") or para.startswith("**["):
+            if (
+                not para
+                or para.startswith("#")
+                or para.startswith("<")
+                or para.startswith("**[")
+                or para.startswith("![")
+            ):
                 continue
-            blurb = para
+            blurb = strip_html(para)
             break
         posts.append(
             {
@@ -434,9 +655,10 @@ def collect_written_posts(output_dir: Path) -> List[Dict[str, Any]]:
                 "date": meta.get("date") or "",
                 "kind": meta.get("kind") or "post",
                 "linkedin_url": meta.get("linkedin_url") or "",
-                "demo": meta.get("demo") == "true",
+                "image": meta.get("image") or "",
                 "blurb": blurb,
                 "rel": f"./{path.name}",
+                "html_rel": f"./{path.stem}.html",
             }
         )
     posts.sort(key=lambda p: (p["date"], p["title"]), reverse=True)
@@ -445,45 +667,76 @@ def collect_written_posts(output_dir: Path) -> List[Dict[str, Any]]:
 
 def write_index(output_dir: Path, profile_url: str, posts: List[Dict[str, Any]]) -> None:
     lines = [
+        "---",
+        'title: "Writing"',
+        "body_class: writing-page",
+        "---",
+        "",
         "# Writing",
         "",
         "[← Back to Main Portfolio](../index.md)",
         "",
-        "Selected LinkedIn posts and articles mirrored here for the portfolio — comments and reactions stay on LinkedIn.",
+        "Selected LinkedIn posts and articles — full discussion stays on LinkedIn.",
         "",
-        f"Profile: [{profile_url.replace('https://', '')}]({profile_url})",
-        "",
-        "---",
+        f'[Open LinkedIn profile →]({profile_url})',
         "",
     ]
     if not posts:
         lines.extend(
             [
-                "_No imported items yet. Run `./scripts/import-linkedin.sh` after setting `feed_url` or adding inbox JSON._",
+                "_No imported items yet. Run `./scripts/import-linkedin.sh` after setting `feed_url` or adding post URLs._",
                 "",
             ]
         )
     else:
-        lines.append("| Date | Type | Title |")
-        lines.append("| :--- | :--- | :--- |")
+        lines.append('<div class="writing-feed">')
+        lines.append("")
         for post in posts:
-            kind = post["kind"].capitalize()
-            demo = " *(demo)*" if post.get("demo") else ""
-            lines.append(f"| {post['date']} | {kind}{demo} | [{post['title']}]({post['rel']}) |")
-        lines.append("")
-        lines.append("## Recent")
-        lines.append("")
-        for post in posts[:12]:
-            lines.append(f"### [{post['title']}]({post['rel']})")
+            lines.append('<article class="writing-entry">')
+            lines.append("")
+            if post["image"]:
+                lines.append(
+                    f'<a class="writing-entry-media" href="{html_lib.escape(post["rel"])}">'
+                    f'<img src="{html_lib.escape(post["image"])}" alt="" /></a>'
+                )
+                lines.append("")
+            lines.append('<div class="writing-entry-body">')
+            lines.append("")
+            lines.append(
+                f'<p class="writing-meta"><time datetime="{post["date"]}">{post["date"]}</time>'
+                f' · {post["kind"].capitalize()}</p>'
+            )
+            lines.append("")
+            lines.append(f'### [{post["title"]}]({post["rel"]})')
             lines.append("")
             if post["blurb"]:
                 lines.append(post["blurb"])
                 lines.append("")
+            links = [f'[Read more →]({post["rel"]})']
             if post["linkedin_url"]:
-                lines.append(f"[Discuss on LinkedIn →]({post['linkedin_url']})")
-                lines.append("")
-    path = output_dir / "README.md"
-    path.write_text("\n".join(lines), encoding="utf-8")
+                links.append(f'[Discuss on LinkedIn →]({post["linkedin_url"]})')
+            lines.append(" · ".join(links))
+            lines.append("")
+            lines.append("</div>")
+            lines.append("")
+            lines.append("</article>")
+            lines.append("")
+        lines.append("</div>")
+        lines.append("")
+    (output_dir / "README.md").write_text("\n".join(lines), encoding="utf-8")
+
+
+def remove_posts_by_ids(output_dir: Path, ids: List[str]) -> None:
+    idset = set(ids)
+    for path in output_dir.glob("*.md"):
+        if path.name == "README.md":
+            continue
+        text = path.read_text(encoding="utf-8")
+        for iid in idset:
+            if f'import_id: "{iid}"' in text or f"import_id: {iid}" in text:
+                path.unlink()
+                print(f"Removed stale {path.relative_to(ROOT)}")
+                break
 
 
 def main() -> int:
@@ -494,6 +747,16 @@ def main() -> int:
         help="Path to linkedin.config.json",
     )
     parser.add_argument("--dry-run", action="store_true", help="Show what would be imported")
+    parser.add_argument(
+        "--rebuild-index",
+        action="store_true",
+        help="Only regenerate Writing/README.md from existing posts",
+    )
+    parser.add_argument(
+        "--refresh",
+        action="store_true",
+        help="Re-fetch and overwrite posts for URLs/feed items even if already seen",
+    )
     args = parser.parse_args()
 
     config_path = Path(args.config)
@@ -505,9 +768,17 @@ def main() -> int:
     inbox_dir = ROOT / config.get("inbox_dir", "scripts/linkedin-inbox")
     state_path = ROOT / config.get("state_file", "scripts/linkedin-seen.json")
     urls_file = ROOT / config.get("urls_file", "scripts/linkedin-urls.txt")
+    assets_dir = ROOT / config.get("assets_dir", "assets/writing")
     max_chars = int(config.get("excerpt_max_chars", 420))
     profile_url = config.get("profile_url", "https://www.linkedin.com/in/zlatko-lakisic/")
     feed_url = (config.get("feed_url") or "").strip()
+    download_images = bool(config.get("download_images", True))
+
+    if args.rebuild_index:
+        posts = collect_written_posts(output_dir)
+        write_index(output_dir, profile_url, posts)
+        print(f"Updated {output_dir.relative_to(ROOT)}/README.md ({len(posts)} post(s))")
+        return 0
 
     state = load_state(state_path)
     seen = set(state.get("ids") or [])
@@ -518,7 +789,6 @@ def main() -> int:
     candidates.extend(inbox_items)
     candidates.extend(load_urls_file(urls_file, max_chars))
 
-    # Prefer first occurrence of each id
     ordered: List[Dict[str, Any]] = []
     seen_batch = set()
     for item in candidates:
@@ -527,21 +797,32 @@ def main() -> int:
         seen_batch.add(item["id"])
         ordered.append(item)
 
-    new_items = [i for i in ordered if i["id"] not in seen]
+    if args.refresh:
+        new_items = ordered
+    else:
+        new_items = [i for i in ordered if i["id"] not in seen]
 
     if not feed_url and not inbox_items and not any(
-        line.strip() and not line.strip().startswith("#") for line in (urls_file.read_text(encoding="utf-8").splitlines() if urls_file.exists() else [])
+        line.strip() and not line.strip().startswith("#")
+        for line in (urls_file.read_text(encoding="utf-8").splitlines() if urls_file.exists() else [])
     ):
         print("No sources configured.")
-        print("  • Set feed_url in scripts/linkedin.config.json (RSS.app → your LinkedIn activity), or")
+        print("  • Set feed_url in scripts/linkedin.config.json, or")
         print("  • Drop *.json into scripts/linkedin-inbox/, or")
-        print("  • Add URLs to scripts/linkedin-urls.txt")
+        print("  • Add post/article URLs to scripts/linkedin-urls.txt")
 
     if args.dry_run:
-        print(f"Would import {len(new_items)} new item(s) ({len(ordered)} total from sources, {len(seen)} already seen)")
+        print(
+            f"Would import {len(new_items)} item(s) "
+            f"({len(ordered)} from sources, {len(seen)} already seen)"
+        )
         for item in new_items:
-            print(f"  - {item['date']} [{item['kind']}] {item['title'][:80]}")
+            img = "img" if item.get("image") else "no-img"
+            print(f"  - {item['date']} [{item['kind']}/{img}] {item['title'][:70]}")
+            print(f"    {item['url']}")
         return 0
+
+    attach_images(new_items, assets_dir, download_images)
 
     output_dir.mkdir(parents=True, exist_ok=True)
     written = 0
@@ -550,6 +831,22 @@ def main() -> int:
         seen.add(item["id"])
         written += 1
         print(f"Wrote {path.relative_to(ROOT)}")
+
+    # Drop old demo placeholder posts if present
+    remove_posts_by_ids(
+        output_dir,
+        [
+            "demo-connected-care-2026-06",
+            "demo-mcp-boundary-2026-07",
+            "demo-presales-architecture-2026-07",
+        ],
+    )
+    for demo_id in (
+        "demo-connected-care-2026-06",
+        "demo-mcp-boundary-2026-07",
+        "demo-presales-architecture-2026-07",
+    ):
+        seen.discard(demo_id)
 
     state["ids"] = sorted(seen)
     state["updated_at"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -568,9 +865,7 @@ def main() -> int:
     posts = collect_written_posts(output_dir)
     write_index(output_dir, profile_url, posts)
     print(f"Updated {output_dir.relative_to(ROOT)}/README.md ({len(posts)} post(s))")
-    print(f"Imported {written} new item(s).")
-    if not feed_url:
-        print("Tip: add an RSS feed_url to scripts/linkedin.config.json for hands-off pulls.")
+    print(f"Imported {written} item(s).")
     return 0
 
 

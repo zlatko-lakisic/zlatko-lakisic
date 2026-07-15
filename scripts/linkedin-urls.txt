@@ -1,3 +1,10 @@
-# Optional: one LinkedIn post/article URL per line.
-# Lines starting with # are ignored.
-# The importer fetches Open Graph title/description when possible.
+# One LinkedIn post or article permalink per line.
+# Profile URLs are not enough — use /posts/... or /pulse/... links.
+# The importer fetches title, excerpt, date, and cover image, then
+# stores the image under assets/writing/.
+
+https://www.linkedin.com/posts/zlatko-lakisic_from-theory-to-turf-cutting-the-green-activity-7455072800836382720-4JSz
+https://www.linkedin.com/posts/zlatko-lakisic_hiring-ai-futureofwork-activity-7450555997921632259-h23J
+https://www.linkedin.com/posts/zlatko-lakisic_from-static-infrastructure-to-dynamic-intelligence-activity-7445503405524959232-e8c6
+https://www.linkedin.com/posts/zlatko-lakisic_on-prem-processing-how-i-cut-the-cloud-activity-7440067004083884032-r-3_
+https://www.linkedin.com/posts/zlatko-lakisic_the-break-i-didnt-want-but-needed-in-the-activity-7418794317139320832-eiQM

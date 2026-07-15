@@ -14,6 +14,12 @@ img {
 
 header {
   margin-bottom: 1.5rem;
+  /* Minimal theme uses a 270px fixed header — keep badge/content inside it */
+  max-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding-right: 0.25rem;
 }
 
 header img {
@@ -94,18 +100,50 @@ header p {
 }
 
 .linkedin-badge-wrap {
-  margin: 0 0 1rem;
+  --li-badge-native-width: 300px;
+  --li-badge-scale: 0.82;
+  width: calc(var(--li-badge-native-width) * var(--li-badge-scale));
   max-width: 100%;
+  margin: 0.25rem 0 1.1rem;
   overflow: hidden;
+  isolation: isolate;
+  line-height: 0;
 }
 
 .linkedin-badge-wrap .LI-profile-badge,
-.linkedin-badge-wrap .profile-badge {
-  max-width: 100%;
+.linkedin-badge-wrap .profile-badge,
+.linkedin-badge-wrap .badge-base {
+  display: block;
+  width: var(--li-badge-native-width);
+  max-width: none;
+  transform: scale(var(--li-badge-scale));
+  transform-origin: top left;
+  /* reclaim the unused layout box after scale so links below don’t get covered */
+  margin-bottom: calc((var(--li-badge-scale) - 1) * 120px);
 }
 
 .linkedin-badge-wrap iframe {
-  max-width: 100% !important;
+  max-width: none !important;
+}
+
+@media print, screen and (max-width: 960px) {
+  header {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .linkedin-badge-wrap {
+    --li-badge-scale: 1;
+    width: min(100%, var(--li-badge-native-width));
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .linkedin-badge-wrap .LI-profile-badge,
+  .linkedin-badge-wrap .profile-badge,
+  .linkedin-badge-wrap .badge-base {
+    margin-bottom: 0;
+  }
 }
 
 section {

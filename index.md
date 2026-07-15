@@ -91,11 +91,11 @@ Architecture narratives by specialty — career history on the **[Resume](./Resu
 | [**Local AI and MCP Architecture**](./Engineering/Local-AI-MCP.md) | Principal engineers, architects | Why MCP matters, enterprise use cases, security, local vs cloud |
 | [**Infrastructure and Home Lab**](./Engineering/Infrastructure.md) | Platform engineers, SREs | Proxmox topology, VLAN isolation, NVR/AI stack |
 | [**Recommendations**](./Recommendations/README.md) | Recruiters, hiring managers | Nine recommendations with excerpts from directors and client partners |
-| [**Writing**](./Writing/README.md) | Recruiters, peers, clients | LinkedIn posts and articles mirrored here — discussion stays on LinkedIn |
+| [**Writing**](./Writing/README.md) | Recruiters, peers, clients | Posts and articles |
 
 ## Writing
 
-Selected LinkedIn posts and articles are mirrored under [**Writing**](./Writing/README.md), each with a link back to discuss on LinkedIn. Refresh locally with `./scripts/import-linkedin.sh` after configuring an RSS `feed_url` (or dropping JSON into `scripts/linkedin-inbox/`).
+[Recent posts and articles →](./Writing/README.md)
 
 ## Philosophy
 

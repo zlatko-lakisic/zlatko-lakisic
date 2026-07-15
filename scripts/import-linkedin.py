@@ -719,15 +719,11 @@ def write_index(output_dir: Path, profile_url: str, posts: List[Dict[str, Any]])
         "",
         "[← Back to Main Portfolio](../index.md)",
         "",
-        "Selected LinkedIn posts and articles — read the full piece and comments on LinkedIn.",
-        "",
-        f'[Open LinkedIn profile →]({profile_url})',
-        "",
     ]
     if not posts:
         lines.extend(
             [
-                "_No imported items yet. Run `./scripts/import-linkedin.sh` after setting `feed_url` or adding post URLs._",
+                "_Nothing published here yet._",
                 "",
             ]
         )
@@ -761,9 +757,9 @@ def write_index(output_dir: Path, profile_url: str, posts: List[Dict[str, Any]])
             actions = []
             if linkedin:
                 actions.append(
-                    f'<a href="{linkedin_href}">Read full post on LinkedIn →</a>'
+                    f'<a href="{linkedin_href}">Read on LinkedIn →</a>'
                 )
-            actions.append(f'<a href="{page_href}">Portfolio note →</a>')
+            actions.append(f'<a href="{page_href}">Archive →</a>')
             lines.append(
                 '<p class="writing-entry-actions">' + " · ".join(actions) + "</p>"
             )

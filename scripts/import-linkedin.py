@@ -633,8 +633,10 @@ def collect_written_posts(output_dir: Path) -> List[Dict[str, Any]]:
             if ":" not in line:
                 continue
             key, val = line.split(":", 1)
-            meta[key.strip()] = val.strip().strip('"')
-        body = parts[2].strip()
+            value = val.strip()
+            if value.startswith('"') and value.endswith('"'):
+                value = value[1:-1].replace('\\"', '"').replace("\\\\", "\\")
+            meta[key.strip()] = value        body = parts[2].strip()
         blurb = ""
         for para in re.split(r"\n\s*\n", body):
             para = para.strip()

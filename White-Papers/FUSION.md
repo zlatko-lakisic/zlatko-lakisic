@@ -1,5 +1,4 @@
 ---
-layout: whitepaper
 title: "FUSION: Federated Unified Sensor Intelligence on Network"
 description: "White paper on carrier-deployed edge intelligence — aggregating sensor inferences and AI/ML across distributed network nodes."
 ---
@@ -40,12 +39,12 @@ description: "White paper on carrier-deployed edge intelligence — aggregating 
 ## TABLE OF CONTENTS
 
 1. [Executive Summary](#executive-summary): the problem, the solution, data rights, why now
-2. [The Business Model & Monetization Ecosystem](#the-business-model-monetization-ecosystem): value layers, revenue progression, liability, ecosystem roles
+2. [The Business Model & Monetization Ecosystem](#the-business-model--monetization-ecosystem): value layers, revenue progression, liability, ecosystem roles
 3. [The Concept](#the-concept): principles, capabilities, beneficiaries, competitive field
 4. [Architecture Overview](#architecture-overview): layers, data flow, technology maturity, cross-operator federation
-5. [Use Cases & Value](#use-cases-value): autonomous vehicles, emergency response, smart cities, security
-6. [Known Considerations & Governance](#known-considerations-governance): privacy, CPNI, international regulation, oversight, roadmap
-7. [Conclusion & Call to Action](#conclusion-call-to-action)
+5. [Use Cases & Value](#use-cases--value): autonomous vehicles, emergency response, smart cities, security
+6. [Known Considerations & Governance](#known-considerations--governance): privacy, CPNI, international regulation, oversight, roadmap
+7. [Conclusion & Call to Action](#conclusion--call-to-action)
 8. [References](#references)
 
 ## ABSTRACT

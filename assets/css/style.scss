@@ -454,6 +454,11 @@ body.whitepaper-page .wrapper {
   gap: 0.5rem 0.75rem;
 }
 
+.whitepaper-toolbar__listen {
+  flex: 1 1 18rem;
+  min-width: 0;
+}
+
 .whitepaper-toolbar__label {
   font-size: 0.75rem;
   font-weight: 600;
@@ -462,37 +467,17 @@ body.whitepaper-page .wrapper {
   color: #555;
 }
 
-.whitepaper-toolbar button {
-  appearance: none;
-  border: 1px solid #d0d7de;
-  border-radius: 4px;
-  background: #f6f8fa;
-  color: #24292f;
-  font: inherit;
-  font-size: 0.9rem;
-  font-weight: 500;
-  padding: 0.35rem 0.7rem;
-  cursor: pointer;
-}
-
-.whitepaper-toolbar button:hover:not(:disabled),
-.whitepaper-toolbar button:focus:not(:disabled) {
-  border-color: #0366d6;
-  background: #f3f9ff;
-}
-
-.whitepaper-toolbar button:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
+.whitepaper-audio {
+  flex: 1 1 14rem;
+  width: 100%;
+  max-width: 28rem;
+  height: 2.25rem;
 }
 
 .whitepaper-toolbar__status {
   font-size: 0.85rem;
   color: #666;
-}
-
-.whitepaper-toolbar.is-unsupported .whitepaper-toolbar__status {
-  color: #9a6700;
+  flex: 1 1 100%;
 }
 
 .whitepaper-download {

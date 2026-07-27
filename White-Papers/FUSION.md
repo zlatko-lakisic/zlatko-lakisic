@@ -19,9 +19,9 @@ description: "White paper on carrier-deployed edge intelligence — aggregating 
 <div class="whitepaper-toolbar" id="whitepaper-listen">
   <div class="whitepaper-toolbar__listen">
     <span class="whitepaper-toolbar__label">Listen</span>
-    <button type="button" data-listen-play>Play</button>
-    <button type="button" data-listen-pause>Pause</button>
-    <button type="button" data-listen-stop>Stop</button>
+    <audio class="whitepaper-audio" controls preload="metadata" src="../assets/white-papers/fusion/fusion-v1.1-narration.mp3">
+      Your browser does not support audio playback.
+    </audio>
     <span class="whitepaper-toolbar__status" data-listen-status></span>
   </div>
   <div class="whitepaper-toolbar__actions">

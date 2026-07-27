@@ -3,19 +3,6 @@ title: "FUSION: Federated Unified Sensor Intelligence on Network"
 description: "White paper on carrier-deployed edge intelligence — aggregating sensor inferences and AI/ML across distributed network nodes."
 ---
 
-# FUSION: Federated Unified Sensor Intelligence on Network
-
-<p class="whitepaper-skip-listen"><em>Transforming Carrier Networks into Real-Time Intelligence Infrastructure</em></p>
-
-<div class="whitepaper-meta" markdown="1">
-**White Paper, Version 1.1**
-
-**License:** Creative Commons Attribution 4.0 International (CC BY 4.0)  
-**Author:** Zlatko Lakisic  
-**Portfolio:** [zlatko-lakisic.github.io](https://zlatko-lakisic.github.io/zlatko-lakisic/)  
-**LinkedIn:** [linkedin.com/in/zlatko-lakisic](https://www.linkedin.com/in/zlatko-lakisic/)
-</div>
-
 <div class="whitepaper-toolbar" id="whitepaper-listen">
   <div class="whitepaper-toolbar__listen">
     <span class="whitepaper-toolbar__label">Listen</span>
@@ -29,6 +16,10 @@ description: "White paper on carrier-deployed edge intelligence — aggregating 
     <a href="https://github.com/zlatko-lakisic/white-papers-fusion-public">Public release repo</a>
   </div>
 </div>
+
+# FUSION: Federated Unified Sensor Intelligence on Network
+
+<p class="whitepaper-skip-listen whitepaper-subtitle"><em>Transforming Carrier Networks into Real-Time Intelligence Infrastructure</em></p>
 
 <div id="whitepaper-content" markdown="1">
 
@@ -1199,4 +1190,13 @@ With deliberate attention to privacy, transparency, and regulatory partnership, 
 
 ---
 
-<p class="whitepaper-skip-listen"><strong>License:</strong> <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · Full PDF: <a href="https://github.com/zlatko-lakisic/white-papers-fusion-public/raw/main/FUSION_WhitePaper_v1.1.pdf">FUSION_WhitePaper_v1.1.pdf</a> · Source release: <a href="https://github.com/zlatko-lakisic/white-papers-fusion-public">white-papers-fusion-public</a></p>
+<div class="whitepaper-meta whitepaper-skip-listen" markdown="1">
+**White Paper, Version 1.1**
+
+**License:** Creative Commons Attribution 4.0 International (CC BY 4.0)  
+**Author:** Zlatko Lakisic  
+**Portfolio:** [zlatko-lakisic.github.io](https://zlatko-lakisic.github.io/zlatko-lakisic/)  
+**LinkedIn:** [linkedin.com/in/zlatko-lakisic](https://www.linkedin.com/in/zlatko-lakisic/)
+
+Full PDF: [FUSION_WhitePaper_v1.1.pdf](https://github.com/zlatko-lakisic/white-papers-fusion-public/raw/main/FUSION_WhitePaper_v1.1.pdf) · Source release: [white-papers-fusion-public](https://github.com/zlatko-lakisic/white-papers-fusion-public)
+</div>

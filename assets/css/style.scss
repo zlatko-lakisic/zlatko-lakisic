@@ -402,10 +402,16 @@ body.whitepaper-page .wrapper {
   line-height: 1.65;
 }
 
-.whitepaper-main > h1:first-child {
+.whitepaper-main > h1 {
   margin-top: 0.25rem;
   font-size: clamp(1.6rem, 3.2vw, 2.1rem);
   line-height: 1.25;
+}
+
+.whitepaper-subtitle {
+  margin: 0 0 1.25rem;
+  font-size: 1.05rem;
+  color: #444;
 }
 
 .whitepaper-cover {

@@ -27,6 +27,10 @@ defaults:
       path: ""
     values:
       layout: default
+  - scope:
+      path: "White-Papers"
+    values:
+      layout: whitepaper
 
 exclude:
   - Gemfile

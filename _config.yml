@@ -28,7 +28,7 @@ defaults:
     values:
       layout: default
   - scope:
-      path: "White-Papers"
+      path: "White-Papers/FUSION.md"
     values:
       layout: whitepaper
 

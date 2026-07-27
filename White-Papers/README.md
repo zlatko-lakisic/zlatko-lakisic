@@ -1,15 +1,19 @@
 # White Papers
 
+[← Back to Main Portfolio](../index.md)
+
 Strategic concept papers and published releases.
 
-| Paper | Version | Formats |
-| :-- | :-- | :-- |
-| [**FUSION: Federated Unified Sensor Intelligence on Network**](./FUSION.md) | 1.1 | [Read on site](./FUSION.md) · [Download PDF](https://github.com/zlatko-lakisic/white-papers-fusion-public/raw/main/FUSION_WhitePaper_v1.1.pdf) · [Public repo](https://github.com/zlatko-lakisic/white-papers-fusion-public) |
+<div class="writing-feed">
 
-## FUSION
+<article class="writing-entry">
+<a class="writing-entry-media" href="./FUSION.html"><img src="../assets/white-papers/fusion/cover.webp" alt="" /></a>
+<div class="writing-entry-body">
+<p class="writing-meta"><time datetime="2026-07-25">2026-07-25</time> · White Paper · v1.1</p>
+<h3><a href="./FUSION.html">FUSION: Federated Unified Sensor Intelligence on Network</a></h3>
+<p>Today's telecommunications networks move data; tomorrow's can make sense of it. This white paper proposes a strategic pivot for carriers: transforming edge infrastructure into an active intelligence layer that ingests sensor inferences, executes AI/ML models near the source, and offers actionable insights to enterprise customers under governed terms.</p>
+<p class="writing-entry-actions"><a href="./FUSION.html">Read white paper →</a></p>
+</div>
+</article>
 
-**FUSION** (Federated Unified Sensor Intelligence on Network) is a concept for carrier-deployed edge intelligence infrastructure: aggregating sensor inferences and running AI/ML workloads across distributed network nodes, so that the telecommunications network operates as an intelligence layer rather than connectivity alone.
-
-The on-site page includes the full paper, browser-based listen controls, and a download link to the published PDF.
-
-**License:** [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+</div>

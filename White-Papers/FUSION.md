@@ -1,14 +1,12 @@
 ---
+layout: whitepaper
 title: "FUSION: Federated Unified Sensor Intelligence on Network"
 description: "White paper on carrier-deployed edge intelligence — aggregating sensor inferences and AI/ML across distributed network nodes."
-body_class: whitepaper-page
 ---
 
 # FUSION: Federated Unified Sensor Intelligence on Network
 
 <p class="whitepaper-skip-listen"><em>Transforming Carrier Networks into Real-Time Intelligence Infrastructure</em></p>
-
-[← Main Portfolio](../index.md) · [White Papers](./README.md) · [Technical Strategy](../Technical-Strategy.md)
 
 <div class="whitepaper-meta" markdown="1">
 **White Paper, Version 1.1**
@@ -32,8 +30,6 @@ body_class: whitepaper-page
     <a href="https://github.com/zlatko-lakisic/white-papers-fusion-public">Public release repo</a>
   </div>
 </div>
-
-<script src="../assets/js/whitepaper-listen.js"></script>
 
 <div id="whitepaper-content" markdown="1">
 

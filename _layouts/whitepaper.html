@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% seo %}
+    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+    {% include head-custom.html %}
+  </head>
+  <body class="whitepaper-page{% if page.body_class %} {{ page.body_class }}{% endif %}"{% if site.google_analytics %} data-ga-enabled="true" data-ga-id="{{ site.google_analytics }}"{% endif %}>
+    <div class="whitepaper-shell">
+      <nav class="whitepaper-topnav" aria-label="Site">
+        <a class="whitepaper-topnav__brand" href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a>
+        <div class="whitepaper-topnav__links">
+          <a href="{{ "/" | absolute_url }}">Portfolio</a>
+          <a href="{{ '/White-Papers/' | relative_url }}">White Papers</a>
+          <a href="{{ '/Resume.html' | relative_url }}">Resume</a>
+          <a href="{{ '/Technical-Strategy.html' | relative_url }}">Strategy</a>
+          <a href="{{ '/Writing/' | relative_url }}">Writing</a>
+          <a href="https://www.linkedin.com/in/zlatko-lakisic/" rel="me noopener" target="_blank">LinkedIn</a>
+        </div>
+      </nav>
+
+      <main class="whitepaper-main">
+        {{ content }}
+      </main>
+    </div>
+    <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+    <script src="{{ '/assets/js/whitepaper-listen.js' | relative_url }}"></script>
+    {% if site.google_analytics %}
+    <script src="{{ '/assets/js/cta-tracking.js' | relative_url }}"></script>
+    {% endif %}
+  </body>
+</html>

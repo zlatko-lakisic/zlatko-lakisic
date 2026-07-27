@@ -328,7 +328,86 @@ body.resume-page section li {
   margin: 0;
 }
 
-/* White papers */
+/* White papers — full-width reading layout (no fixed sidebar) */
+body.whitepaper-page {
+  padding: 0;
+  max-width: none;
+}
+
+body.whitepaper-page .wrapper {
+  display: none;
+}
+
+.whitepaper-shell {
+  width: 100%;
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 0 1.25rem 3rem;
+  box-sizing: border-box;
+}
+
+.whitepaper-topnav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem 1.25rem;
+  margin: 0 -1.25rem 1.5rem;
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid #e5e5e5;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.whitepaper-topnav__brand {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #24292f !important;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+
+.whitepaper-topnav__brand:hover,
+.whitepaper-topnav__brand:focus {
+  color: #0366d6 !important;
+}
+
+.whitepaper-topnav__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 1rem;
+  font-size: 0.9rem;
+}
+
+.whitepaper-topnav__links a {
+  color: #57606a;
+  text-decoration: none !important;
+  font-weight: 500;
+}
+
+.whitepaper-topnav__links a:hover,
+.whitepaper-topnav__links a:focus {
+  color: #0366d6;
+  text-decoration: underline !important;
+}
+
+.whitepaper-main {
+  width: 100%;
+  float: none;
+  position: static;
+  padding: 0;
+  line-height: 1.65;
+}
+
+.whitepaper-main > h1:first-child {
+  margin-top: 0.25rem;
+  font-size: clamp(1.6rem, 3.2vw, 2.1rem);
+  line-height: 1.25;
+}
+
 .whitepaper-cover {
   margin: 0 0 1.25rem;
 }
@@ -363,7 +442,7 @@ body.resume-page section li {
   border-radius: 6px;
   background: #fff;
   position: sticky;
-  top: 0;
+  top: 3.4rem;
   z-index: 5;
 }
 
@@ -453,14 +532,37 @@ body.resume-page section li {
   line-height: 1.5;
 }
 
-body.whitepaper-page section h2 {
+body.whitepaper-page .whitepaper-main h2 {
   margin-top: 2rem;
-  scroll-margin-top: 4.5rem;
+  scroll-margin-top: 7.5rem;
 }
 
-body.whitepaper-page section h3,
-body.whitepaper-page section h4,
-body.whitepaper-page section h5 {
-  scroll-margin-top: 4.5rem;
+body.whitepaper-page .whitepaper-main h3,
+body.whitepaper-page .whitepaper-main h4,
+body.whitepaper-page .whitepaper-main h5 {
+  scroll-margin-top: 7.5rem;
+}
+
+@media screen and (max-width: 640px) {
+  .whitepaper-shell {
+    padding: 0 1rem 2.5rem;
+  }
+
+  .whitepaper-topnav {
+    margin: 0 -1rem 1.25rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .whitepaper-toolbar {
+    top: 0;
+    position: static;
+  }
+
+  body.whitepaper-page .whitepaper-main h2,
+  body.whitepaper-page .whitepaper-main h3,
+  body.whitepaper-page .whitepaper-main h4,
+  body.whitepaper-page .whitepaper-main h5 {
+    scroll-margin-top: 1.5rem;
+  }
 }
 

@@ -1,6 +1,10 @@
-# White Papers
+---
+layout: whitepaper
+title: White Papers
+description: Strategic concept papers and published releases.
+---
 
-[← Back to Main Portfolio](../index.md)
+# White Papers
 
 Strategic concept papers and published releases.
 

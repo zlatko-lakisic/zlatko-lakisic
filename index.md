@@ -90,8 +90,13 @@ Architecture narratives by specialty — career history on the **[Resume](./Resu
 | [**Identity & Access**](./Identity/README.md) | Security architects, IAM engineers | Enterprise federation, zero-trust segmentation, credential governance |
 | [**Local AI and MCP Architecture**](./Engineering/Local-AI-MCP.md) | Principal engineers, architects | Why MCP matters, enterprise use cases, security, local vs cloud |
 | [**Infrastructure and Home Lab**](./Engineering/Infrastructure.md) | Platform engineers, SREs | Proxmox topology, VLAN isolation, NVR/AI stack |
+| [**White Papers**](./White-Papers/README.md) | Operators, architects, policy peers | FUSION edge-intelligence concept — read, listen, or download PDF |
 | [**Recommendations**](./Recommendations/README.md) | Recruiters, hiring managers | Nine recommendations with excerpts from directors and client partners |
 | [**Writing**](./Writing/README.md) | Recruiters, peers, clients | Posts and articles |
+
+## White Papers
+
+[**FUSION**](./White-Papers/FUSION.md) — Federated Unified Sensor Intelligence on Network (v1.1). [Catalog →](./White-Papers/README.md) · [Download PDF](https://github.com/zlatko-lakisic/white-papers-fusion-public/raw/main/FUSION_WhitePaper_v1.1.pdf)
 
 ## Writing
 

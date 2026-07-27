@@ -1,4 +1,4 @@
-<!-- AUTO-GENERATED from index.md. Do not edit README.md directly. Run: scripts/sync-readme.sh -->
+<!-- AUTO-GENERATED from index.md. Do not edit README.md directly. Run: scripts/sync-readme.ps1 -->
 
 **Private Networks Architect & Practice Lead · Enterprise Presales & Connected Solutions**
 
@@ -92,8 +92,13 @@ Architecture narratives by specialty — career history on the **[Resume](https:
 | [**Identity & Access**](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/Identity/README.md) | Security architects, IAM engineers | Enterprise federation, zero-trust segmentation, credential governance |
 | [**Local AI and MCP Architecture**](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/Engineering/Local-AI-MCP.md) | Principal engineers, architects | Why MCP matters, enterprise use cases, security, local vs cloud |
 | [**Infrastructure and Home Lab**](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/Engineering/Infrastructure.md) | Platform engineers, SREs | Proxmox topology, VLAN isolation, NVR/AI stack |
+| [**White Papers**](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/White-Papers/README.md) | Operators, architects, policy peers | FUSION edge-intelligence concept — read, listen, or download PDF |
 | [**Recommendations**](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/Recommendations/README.md) | Recruiters, hiring managers | Nine recommendations with excerpts from directors and client partners |
 | [**Writing**](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/Writing/README.md) | Recruiters, peers, clients | Posts and articles |
+
+## White Papers
+
+[**FUSION**](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/White-Papers/FUSION.md) — Federated Unified Sensor Intelligence on Network (v1.1). [Catalog →](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/White-Papers/README.md) · [Download PDF](https://github.com/zlatko-lakisic/white-papers-fusion-public/raw/main/FUSION_WhitePaper_v1.1.pdf)
 
 ## Writing
 

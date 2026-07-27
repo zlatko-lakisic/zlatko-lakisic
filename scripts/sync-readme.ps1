@@ -29,6 +29,7 @@ $replacements = @(
     @{ Pattern = '\]\(\./Engineering/([^)#]+)\)'; Replacement = "]($base/Engineering/`$1)" }
     @{ Pattern = '\]\(\./Healthcare/([^)#]+)\)'; Replacement = "]($base/Healthcare/`$1)" }
     @{ Pattern = '\]\(\./Identity/([^)#]+)\)'; Replacement = "]($base/Identity/`$1)" }
+    @{ Pattern = '\]\(\./White-Papers/([^)#]+)\)'; Replacement = "]($base/White-Papers/`$1)" }
     @{ Pattern = '\]\(\./index\.md\)'; Replacement = "]($base/index.md)" }
     @{ Pattern = '\]\(LICENSE\)'; Replacement = "]($base/LICENSE)" }
     @{ Pattern = 'href="\./Projects\.md#([^"]+)"'; Replacement = "href=""$base/Projects.md#`$1""" }

@@ -31,6 +31,10 @@ defaults:
       path: "White-Papers/FUSION.md"
     values:
       layout: whitepaper
+  - scope:
+      path: "White-Papers/Grid-Intelligence.md"
+    values:
+      layout: whitepaper
 
 exclude:
   - Gemfile

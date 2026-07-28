@@ -436,6 +436,14 @@ body.whitepaper-page .wrapper {
   line-height: 1.5;
 }
 
+.whitepaper-callout {
+  margin: 1.25rem 0;
+  padding: 0.85rem 1rem;
+  border-left: 4px solid #159957;
+  background: #f6f8fa;
+  font-size: 0.95rem;
+}
+
 .whitepaper-toolbar {
   display: flex;
   flex-wrap: wrap;

@@ -90,11 +90,13 @@ Architecture narratives by specialty — career history on the **[Resume](./Resu
 | [**Identity & Access**](./Identity/README.md) | Security architects, IAM engineers | Enterprise federation, zero-trust segmentation, credential governance |
 | [**Local AI and MCP Architecture**](./Engineering/Local-AI-MCP.md) | Principal engineers, architects | Why MCP matters, enterprise use cases, security, local vs cloud |
 | [**Infrastructure and Home Lab**](./Engineering/Infrastructure.md) | Platform engineers, SREs | Proxmox topology, VLAN isolation, NVR/AI stack |
-| [**White Papers**](./White-Papers/README.md) | Operators, architects, policy peers | Grid Intelligence · FUSION — read, listen, or download PDF |
+| [**White Papers**](./White-Papers/README.md) | Operators, architects, healthcare IT, policy peers | COMSTAR · Grid Intelligence · FUSION — read, listen, or download PDF |
 | [**Recommendations**](./Recommendations/README.md) | Recruiters, hiring managers | Nine recommendations with excerpts from directors and client partners |
 | [**Writing**](./Writing/README.md) | Recruiters, peers, clients | Posts and articles |
 
 ## White Papers
+
+[**COMSTAR**](./White-Papers/COMSTAR-Hospital.md) — The Addressable Hospital (v1.0). [Download PDF](https://github.com/zlatko-lakisic/white-papers-comstar-hospital/raw/main/COMSTAR-HOSPITAL_WhitePaper_v1.0.pdf) · [ROI model](https://github.com/zlatko-lakisic/white-papers-comstar-hospital/raw/main/COMSTAR_Hospital_ROI_Model.xlsx)
 
 [**Grid Intelligence**](./White-Papers/Grid-Intelligence.md) — The KPI Is the Specification (v1.0). [Download PDF](https://github.com/zlatko-lakisic/white-papers-grid-intelligence-public/raw/main/GRID-INTELLIGENCE_WhitePaper_Beta_v1.0.pdf)
 

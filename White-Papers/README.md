@@ -7,6 +7,16 @@ Strategic concept papers and published releases.
 <div class="writing-feed">
 
 <article class="writing-entry">
+<a class="writing-entry-media" href="./COMSTAR-Hospital.html"><img src="../assets/white-papers/comstar-hospital/cover.webp" alt="" /></a>
+<div class="writing-entry-body">
+<p class="writing-meta"><time datetime="2026-08-04">2026-08-04</time> · White Paper · v1.0</p>
+<h3><a href="./COMSTAR-Hospital.html">COMSTAR: The Addressable Hospital</a></h3>
+<p>Hospitals have spent a decade instrumenting themselves. The data exists — and is almost entirely unreachable by the person who needs it. This paper proposes addressable edge intelligence: terminals that convert hospital systems into something a clinician can talk to at the point of work, starting with operational outcomes that carry no PHI.</p>
+<p class="writing-entry-actions"><a href="./COMSTAR-Hospital.html">Read white paper →</a></p>
+</div>
+</article>
+
+<article class="writing-entry">
 <a class="writing-entry-media" href="./Grid-Intelligence.html"><img src="../assets/white-papers/grid-intelligence/hero.webp" alt="" /></a>
 <div class="writing-entry-body">
 <p class="writing-meta"><time datetime="2026-07-28">2026-07-28</time> · White Paper · v1.0</p>

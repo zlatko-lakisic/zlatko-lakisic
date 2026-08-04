@@ -35,6 +35,10 @@ defaults:
       path: "White-Papers/Grid-Intelligence.md"
     values:
       layout: whitepaper
+  - scope:
+      path: "White-Papers/COMSTAR-Hospital.md"
+    values:
+      layout: whitepaper
 
 exclude:
   - Gemfile

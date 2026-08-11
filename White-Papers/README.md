@@ -7,15 +7,6 @@ Strategic concept papers and published releases.
 <div class="writing-feed">
 
 <article class="writing-entry">
-<div class="writing-entry-body">
-<p class="writing-meta"><time datetime="2026-08-10">2026-08-10</time> · White Paper · v1.0 draft</p>
-<h3><a href="./Ledger.html">Ledger</a></h3>
-<p>Scaffold in progress. Source markdown and figures will land in the working tree, then sync here with listen audio, PDF download, and catalog hero art.</p>
-<p class="writing-entry-actions"><a href="./Ledger.html">Open scaffold →</a> · <a href="https://github.com/zlatko-lakisic/white-papers-ledger">Public repo →</a></p>
-</div>
-</article>
-
-<article class="writing-entry">
 <a class="writing-entry-media" href="./COMSTAR-Hospital.html"><img src="../assets/white-papers/comstar-hospital/cover.webp" alt="" /></a>
 <div class="writing-entry-body">
 <p class="writing-meta"><time datetime="2026-08-04">2026-08-04</time> · White Paper · v1.0</p>

@@ -39,10 +39,6 @@ defaults:
       path: "White-Papers/COMSTAR-Hospital.md"
     values:
       layout: whitepaper
-  - scope:
-      path: "White-Papers/Ledger.md"
-    values:
-      layout: whitepaper
 
 exclude:
   - Gemfile

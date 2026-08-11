@@ -500,5 +500,7 @@ The license covers this document and its figures. It does not extend to the unde
 **Portfolio:** [zlatko-lakisic.github.io](https://zlatko-lakisic.github.io/zlatko-lakisic/)  
 **LinkedIn:** [linkedin.com/in/zlatko-lakisic](https://www.linkedin.com/in/zlatko-lakisic/)
 
+Related → [*Ledger: Assurance Is Bought With Labor*](./Ledger.md) — control substitution and operational observability in enterprise automation
+
 Full PDF: [GRID-INTELLIGENCE_WhitePaper_Beta_v1.0.pdf](https://github.com/zlatko-lakisic/white-papers-grid-intelligence-public/raw/main/GRID-INTELLIGENCE_WhitePaper_Beta_v1.0.pdf) · Source release: [white-papers-grid-intelligence-public](https://github.com/zlatko-lakisic/white-papers-grid-intelligence-public)
 </div>

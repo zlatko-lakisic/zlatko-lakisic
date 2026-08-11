@@ -115,6 +115,8 @@ Principal Consultant — Lead architect and delivery director. Led a team of 15 
 
 **Related experience** → [Resume — Genpact](./Resume.md#principal-consultant--genpact-new-york-ny)
 
+**White paper** → [Ledger: Assurance Is Bought With Labor](./White-Papers/Ledger.md) — control substitution, integration semantics, and operational observability from this engagement
+
 ---
 
 <h2 id="alstom">ALSTOM — Mission-Critical Industrial Interoperability</h2>

@@ -45,7 +45,7 @@ LinkedIn project highlights with full architecture narratives — each case stud
 | Case study | Period | Outcome at a glance |
 |---|---|---|
 | [**Omega CMS**](/zlatko-lakisic/Projects.html#omega-cms) | Jan 2017 – Present | Headless, multi-tenant ECM with localization engine and edge caching — [omegacms.io](https://omegacms.io), serverless-ready, database-agnostic ([GitHub](https://github.com/zlatko-lakisic/omegacms)) |
-| [**Walmart Inventory Automation**](/zlatko-lakisic/Projects.html#walmart-inventory-automation) | Genpact · 2018 – 2019 | Unified 50+ legacy and modern systems; dual-mode integration bridge, HITL document-matching ML, and P&L-grade inventory automation across 5,500 locations |
+| [**Walmart Inventory Automation**](/zlatko-lakisic/Projects.html#walmart-inventory-automation) | Genpact · 2018 – 2019 | Unified 50+ legacy and modern systems; dual-mode integration bridge, HITL document-matching ML, and P&L-grade inventory automation across 5,500 locations — [Ledger white paper](./White-Papers/Ledger.md) |
 | [**ALSTOM**](/zlatko-lakisic/Projects.html#alstom) | Green River Media | Secure OT/IT integration layer for transit and industrial telemetry — event-driven messaging, network segregation, multi-continent deployment |
 | [**Video Promotions (ViewBooster)**](/zlatko-lakisic/Projects.html#viewbooster) | Zoomin.TV | High-throughput YouTube ad-tech analytics — async ingestion mesh, stream aggregation, ML channel matching across 60,000+ channels |
 
@@ -90,11 +90,13 @@ Architecture narratives by specialty — career history on the **[Resume](./Resu
 | [**Identity & Access**](./Identity/README.md) | Security architects, IAM engineers | Enterprise federation, zero-trust segmentation, credential governance |
 | [**Local AI and MCP Architecture**](./Engineering/Local-AI-MCP.md) | Principal engineers, architects | Why MCP matters, enterprise use cases, security, local vs cloud |
 | [**Infrastructure and Home Lab**](./Engineering/Infrastructure.md) | Platform engineers, SREs | Proxmox topology, VLAN isolation, NVR/AI stack |
-| [**White Papers**](./White-Papers/README.md) | Operators, architects, healthcare IT, policy peers | COMSTAR · Grid Intelligence · FUSION — read, listen, or download PDF |
+| [**White Papers**](./White-Papers/README.md) | Operators, architects, healthcare IT, policy peers | Ledger · COMSTAR · Grid Intelligence · FUSION — read, listen, or download PDF |
 | [**Recommendations**](./Recommendations/README.md) | Recruiters, hiring managers | Nine recommendations with excerpts from directors and client partners |
 | [**Writing**](./Writing/README.md) | Recruiters, peers, clients | Posts and articles |
 
 ## White Papers
+
+[**Ledger**](./White-Papers/Ledger.md) — Assurance Is Bought With Labor (v1.3). [Download PDF](https://github.com/zlatko-lakisic/white-papers-ledger/raw/main/LEDGER_WhitePaper_v1.3.pdf)
 
 [**COMSTAR**](./White-Papers/COMSTAR-Hospital.md) — The Addressable Hospital (v1.0). [Download PDF](https://github.com/zlatko-lakisic/white-papers-comstar-hospital/raw/main/COMSTAR-HOSPITAL_WhitePaper_v1.0.pdf) · [ROI model](https://github.com/zlatko-lakisic/white-papers-comstar-hospital/raw/main/COMSTAR_Hospital_ROI_Model.xlsx)
 

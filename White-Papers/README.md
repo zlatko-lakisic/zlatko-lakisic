@@ -7,6 +7,16 @@ Strategic concept papers and published releases.
 <div class="writing-feed">
 
 <article class="writing-entry">
+<a class="writing-entry-media" href="./Ledger.html"><img src="../assets/white-papers/ledger/hero.webp" alt="" /></a>
+<div class="writing-entry-body">
+<p class="writing-meta"><time datetime="2026-08-10">2026-08-10</time> · White Paper · v1.3</p>
+<h3><a href="./Ledger.html">Ledger: Assurance Is Bought With Labor</a></h3>
+<p>A de-identified case study of control substitution at enterprise scale — where automating a manual financial control changes how assurance is produced, and can quietly retire the operational knowledge that labor had been generating.</p>
+<p class="writing-entry-actions"><a href="./Ledger.html">Read white paper →</a></p>
+</div>
+</article>
+
+<article class="writing-entry">
 <a class="writing-entry-media" href="./COMSTAR-Hospital.html"><img src="../assets/white-papers/comstar-hospital/cover.webp" alt="" /></a>
 <div class="writing-entry-body">
 <p class="writing-meta"><time datetime="2026-08-04">2026-08-04</time> · White Paper · v1.0</p>

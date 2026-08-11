@@ -1,7 +1,5 @@
 **Private Networks Architect & Practice Lead · Enterprise Presales & Connected Solutions**
 
-**[View formatted portfolio on GitHub Pages →](https://zlatko-lakisic.github.io/zlatko-lakisic/)** — case studies and deep dives with the Minimal theme.
-
 <figure>
 <img src="./assets/strategy-framework.jpg" alt="AI Transformation Strategy framework diagram showing four pillars — Strategy, Integration, Empowerment, and Governance — as the governance model for enterprise AI adoption" />
 <figcaption><strong>AI Transformation Strategy framework</strong> — four pillars for enterprise AI adoption: <em>Strategy</em> (outcome-first roadmaps aligned to business metrics), <em>Integration</em> (API and MCP tool boundaries), <em>Empowerment</em> (self-hosted inference and agent workflows), and <em>Governance</em> (credential-scoped catalogs, segmented trust, and operational sustainability).</figcaption>

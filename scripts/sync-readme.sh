@@ -31,6 +31,14 @@ content="$(sed "s|](LICENSE)|]($BASE/LICENSE)|g" <<< "$content")"
 content="$(sed -E "s|href=\"\\./Projects\\.md#([^\"]+)\"|href=\"$BASE/Projects.md#\\1\"|g" <<< "$content")"
 content="$(sed -E "s|href=\"\\./Engineering/([^\"]+)\"|href=\"$BASE/Engineering/\\1\"|g" <<< "$content")"
 
+content="$(awk '
+  { print }
+  /^\*\*Private Networks Architect/ {
+    print ""
+    print "**[View formatted portfolio on GitHub Pages →](https://zlatko-lakisic.github.io/zlatko-lakisic/)** — case studies and deep dives with the Minimal theme."
+  }
+' <<< "$content")"
+
 {
   echo "<!-- AUTO-GENERATED from index.md. Do not edit README.md directly. Run: scripts/sync-readme.sh -->"
   echo ""

@@ -40,6 +40,12 @@ foreach ($r in $replacements) {
     $content = [regex]::Replace($content, $r.Pattern, $r.Replacement)
 }
 
+$pagesCta = "**[View formatted portfolio on GitHub Pages →](https://zlatko-lakisic.github.io/zlatko-lakisic/)** — case studies and deep dives with the Minimal theme.`n"
+$needle = "**Private Networks Architect & Practice Lead · Enterprise Presales & Connected Solutions**`n"
+if ($content.Contains($needle) -and -not $content.Contains($pagesCta.Trim())) {
+    $content = $content.Replace($needle, $needle + "`n" + $pagesCta)
+}
+
 $header = @"
 <!-- AUTO-GENERATED from index.md. Do not edit README.md directly. Run: scripts/sync-readme.ps1 -->
 

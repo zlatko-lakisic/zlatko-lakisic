@@ -92,11 +92,13 @@ Architecture narratives by specialty — career history on the **[Resume](https:
 | [**Identity & Access**](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/Identity/README.md) | Security architects, IAM engineers | Enterprise federation, zero-trust segmentation, credential governance |
 | [**Local AI and MCP Architecture**](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/Engineering/Local-AI-MCP.md) | Principal engineers, architects | Why MCP matters, enterprise use cases, security, local vs cloud |
 | [**Infrastructure and Home Lab**](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/Engineering/Infrastructure.md) | Platform engineers, SREs | Proxmox topology, VLAN isolation, NVR/AI stack |
-| [**White Papers**](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/White-Papers/README.md) | Operators, architects, healthcare IT, policy peers | COMSTAR · Grid Intelligence · FUSION — read, listen, or download PDF |
+| [**White Papers**](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/White-Papers/README.md) | Operators, architects, healthcare IT, policy peers | COMSTAR · Grid Intelligence · FUSION · Ledger (draft) — read, listen, or download PDF |
 | [**Recommendations**](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/Recommendations/README.md) | Recruiters, hiring managers | Nine recommendations with excerpts from directors and client partners |
 | [**Writing**](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/Writing/README.md) | Recruiters, peers, clients | Posts and articles |
 
 ## White Papers
+
+[**Ledger**](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/White-Papers/Ledger.md) — Draft scaffold (v1.0). [Public repo](https://github.com/zlatko-lakisic/white-papers-ledger)
 
 [**COMSTAR**](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/White-Papers/COMSTAR-Hospital.md) — The Addressable Hospital (v1.0). [Download PDF](https://github.com/zlatko-lakisic/white-papers-comstar-hospital/raw/main/COMSTAR-HOSPITAL_WhitePaper_v1.0.pdf) · [ROI model](https://github.com/zlatko-lakisic/white-papers-comstar-hospital/raw/main/COMSTAR_Hospital_ROI_Model.xlsx)
 

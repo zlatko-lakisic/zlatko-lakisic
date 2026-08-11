@@ -809,7 +809,6 @@ The license covers this document and its figures. It does not extend to the unde
 **Portfolio:** [zlatko-lakisic.github.io](https://zlatko-lakisic.github.io/zlatko-lakisic/)  
 **LinkedIn:** [linkedin.com/in/zlatko-lakisic](https://www.linkedin.com/in/zlatko-lakisic/)
 
-Related case study → [Walmart Inventory Automation](../Projects.md#walmart-inventory-automation)  
 Related method paper → [*Grid Intelligence: The KPI Is the Specification*](./Grid-Intelligence.md)
 
 Source release: [white-papers-ledger](https://github.com/zlatko-lakisic/white-papers-ledger) · [Download PDF](https://github.com/zlatko-lakisic/white-papers-ledger/raw/main/LEDGER_WhitePaper_v1.3.pdf)

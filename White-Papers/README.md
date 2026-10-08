@@ -9,7 +9,7 @@ Strategic concept papers and published releases.
 <article class="writing-entry">
 <a class="writing-entry-media" href="./COMSTAR-Game-AI.html"><img src="../assets/white-papers/comstar-game-ai/hero.webp" alt="" /></a>
 <div class="writing-entry-body">
-<p class="writing-meta"><time datetime="2026-10-08">2026-10-08</time> · White Paper · v1.0</p>
+<p class="writing-meta"><time datetime="2026-10-08">2026-10-08</time> · White Paper · Part 1 · v1.0</p>
 <h3><a href="./COMSTAR-Game-AI.html">COMSTAR Game AI: The wrong coordinate system</a></h3>
 <p>An open-source AI client for Total War: Rome Remastered. The game shows a 3D view, and the coordinates an agent needs live on a flat map. This part reports four attempts to perceive the human view, and the turn toward translating the console's map position instead.</p>
 <p class="writing-entry-actions"><a href="./COMSTAR-Game-AI.html">Read white paper →</a></p>

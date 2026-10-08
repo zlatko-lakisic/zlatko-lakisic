@@ -43,6 +43,10 @@ defaults:
       path: "White-Papers/Ledger.md"
     values:
       layout: whitepaper
+  - scope:
+      path: "White-Papers/COMSTAR-Game-AI.md"
+    values:
+      layout: whitepaper
 
 exclude:
   - Gemfile

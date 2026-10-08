@@ -4,6 +4,12 @@ scripts/linkedin-tokens.json
 .env
 .env.*
 
+# Local Jekyll preview
+vendor/
+.bundle/
+_site/
+Gemfile.lock
+
 # OS / editor
 .DS_Store
 .idea/

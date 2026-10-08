@@ -12,8 +12,8 @@ description: "COMSTAR white paper, part 1: why my AI could read the map but not 
     <span class="whitepaper-toolbar__status" data-listen-status></span>
   </div>
   <div class="whitepaper-toolbar__actions">
-    <a class="whitepaper-download" href="https://github.com/zlatko-lakisic/white-papers-comstar-game-ai-1/raw/main/COMSTAR-GAME-AI_WhitePaper_Part1_v1.0.pdf" download="COMSTAR-GAME-AI_WhitePaper_Part1_v1.0.pdf">Download PDF (v1.0)</a>
-    <a href="https://github.com/zlatko-lakisic/white-papers-comstar-game-ai-1">Public release repo</a>
+    <a class="whitepaper-download" href="https://github.com/zlatko-lakisic/white-papers-comstar-game-ai/raw/main/COMSTAR-GAME-AI_WhitePaper_Part1_v1.0.pdf" download="COMSTAR-GAME-AI_WhitePaper_Part1_v1.0.pdf">Download PDF (v1.0)</a>
+    <a href="https://github.com/zlatko-lakisic/white-papers-comstar-game-ai">Public release repo</a>
   </div>
 </div>
 
@@ -378,5 +378,5 @@ Errors in map units. Gate: 3.
 **Portfolio:** [zlatko-lakisic.github.io](https://zlatko-lakisic.github.io/zlatko-lakisic/)  
 **LinkedIn:** [linkedin.com/in/zlatko-lakisic](https://www.linkedin.com/in/zlatko-lakisic/)
 
-Source release: [white-papers-comstar-game-ai-1](https://github.com/zlatko-lakisic/white-papers-comstar-game-ai-1) · [Download PDF](https://github.com/zlatko-lakisic/white-papers-comstar-game-ai-1/raw/main/COMSTAR-GAME-AI_WhitePaper_Part1_v1.0.pdf)
+Source release: [white-papers-comstar-game-ai](https://github.com/zlatko-lakisic/white-papers-comstar-game-ai) · [Download PDF](https://github.com/zlatko-lakisic/white-papers-comstar-game-ai/raw/main/COMSTAR-GAME-AI_WhitePaper_Part1_v1.0.pdf)
 </div>

@@ -98,7 +98,7 @@ Architecture narratives by specialty — career history on the **[Resume](https:
 
 ## White Papers
 
-[**COMSTAR Game AI**](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/White-Papers/COMSTAR-Game-AI.md) — The wrong coordinate system (v1.0). [Download PDF](https://github.com/zlatko-lakisic/white-papers-comstar-game-ai-1/raw/main/COMSTAR-GAME-AI_WhitePaper_Part1_v1.0.pdf)
+[**COMSTAR Game AI**](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/White-Papers/COMSTAR-Game-AI.md) — The wrong coordinate system (v1.0). [Download PDF](https://github.com/zlatko-lakisic/white-papers-comstar-game-ai/raw/main/COMSTAR-GAME-AI_WhitePaper_Part1_v1.0.pdf)
 
 [**Ledger**](https://github.com/zlatko-lakisic/zlatko-lakisic/blob/main/White-Papers/Ledger.md) — Assurance Is Bought With Labor (v1.3). [Download PDF](https://github.com/zlatko-lakisic/white-papers-ledger/raw/main/LEDGER_WhitePaper_v1.3.pdf)
 

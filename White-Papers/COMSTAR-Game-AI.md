@@ -3,7 +3,14 @@ title: "COMSTAR Game AI: The wrong coordinate system"
 description: "COMSTAR white paper, part 1: why my AI could read the map but not find anything on it"
 ---
 
-<div class="whitepaper-toolbar" id="whitepaper-download">
+<div class="whitepaper-toolbar" id="whitepaper-listen">
+  <div class="whitepaper-toolbar__listen">
+    <span class="whitepaper-toolbar__label">Listen</span>
+    <audio class="whitepaper-audio" controls preload="metadata" src="../assets/white-papers/comstar-game-ai/comstar-game-ai-v1.0-narration.mp3">
+      Your browser does not support audio playback.
+    </audio>
+    <span class="whitepaper-toolbar__status" data-listen-status></span>
+  </div>
   <div class="whitepaper-toolbar__actions">
     <a class="whitepaper-download" href="https://github.com/zlatko-lakisic/white-papers-comstar-game-ai-1/raw/main/COMSTAR-GAME-AI_WhitePaper_Part1_v1.0.pdf" download="COMSTAR-GAME-AI_WhitePaper_Part1_v1.0.pdf">Download PDF (v1.0)</a>
     <a href="https://github.com/zlatko-lakisic/white-papers-comstar-game-ai-1">Public release repo</a>
@@ -12,7 +19,7 @@ description: "COMSTAR white paper, part 1: why my AI could read the map but not 
 
 # COMSTAR Game AI: The wrong coordinate system
 
-<p class="whitepaper-subtitle"><em>Part 1: why my AI could read the map but not find anything on it</em></p>
+<p class="whitepaper-skip-listen whitepaper-subtitle"><em>Part 1: why my AI could read the map but not find anything on it</em></p>
 
 <div id="whitepaper-content" markdown="1">
 
@@ -363,7 +370,7 @@ Errors in map units. Gate: 3.
 
 ---
 
-<div class="whitepaper-meta" markdown="1">
+<div class="whitepaper-meta whitepaper-skip-listen" markdown="1">
 **White Paper, Version 1.0**
 
 **License:** Creative Commons Attribution 4.0 International (CC BY 4.0)  

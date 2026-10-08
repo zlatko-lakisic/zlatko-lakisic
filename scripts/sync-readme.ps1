@@ -11,6 +11,7 @@ if (-not (Test-Path $indexPath)) {
 }
 
 $content = Get-Content $indexPath -Raw -Encoding UTF8
+$content = $content -replace "`r`n", "`n"
 
 # Relative markdown links -> GitHub blob URLs (order matters: anchors before bare paths)
 $replacements = @(
@@ -46,10 +47,8 @@ if ($content.Contains($needle) -and -not $content.Contains($pagesCta.Trim())) {
     $content = $content.Replace($needle, $needle + "`n" + $pagesCta)
 }
 
-$header = @"
-<!-- AUTO-GENERATED from index.md. Do not edit README.md directly. Run: scripts/sync-readme.ps1 -->
+$header = "<!-- AUTO-GENERATED from index.md. Do not edit README.md directly. Run: scripts/sync-readme.ps1 -->`n`n"
 
-"@
-
-Set-Content -Path $readmePath -Value ($header + $content) -Encoding UTF8 -NoNewline
+$utf8 = New-Object System.Text.UTF8Encoding $false
+[System.IO.File]::WriteAllText($readmePath, ($header + $content), $utf8)
 Write-Host "Synced README.md from index.md"

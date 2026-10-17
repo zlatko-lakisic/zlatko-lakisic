@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "../white-papers"
 		}
 	],
 	"settings": {}

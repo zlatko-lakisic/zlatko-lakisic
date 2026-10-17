@@ -47,6 +47,10 @@ defaults:
       path: "White-Papers/COMSTAR-Game-AI.md"
     values:
       layout: whitepaper
+  - scope:
+      path: "White-Papers/Agent-Coop.md"
+    values:
+      layout: whitepaper
 
 exclude:
   - Gemfile

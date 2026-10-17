@@ -7,6 +7,16 @@ Strategic concept papers and published releases.
 <div class="writing-feed">
 
 <article class="writing-entry">
+<a class="writing-entry-media" href="./Agent-Coop.html"><img src="../assets/white-papers/agent-coop/hero.webp" alt="" /></a>
+<div class="writing-entry-body">
+<p class="writing-meta"><time datetime="2026-10-17">2026-10-17</time> · White Paper · v0.3</p>
+<h3><a href="./Agent-Coop.html">Agent Co-op: The person is not the message bus</a></h3>
+<p>People who split work across more than one AI assistant end up carrying messages between them. This paper argues that coordinating those agents is an authority problem before it is a transport problem, and describes a shared folder of write-once files: one driver edits, helpers answer, and only the person approves.</p>
+<p class="writing-entry-actions"><a href="./Agent-Coop.html">Read white paper →</a></p>
+</div>
+</article>
+
+<article class="writing-entry">
 <a class="writing-entry-media" href="./COMSTAR-Game-AI.html"><img src="../assets/white-papers/comstar-game-ai/hero.webp" alt="" /></a>
 <div class="writing-entry-body">
 <p class="writing-meta"><time datetime="2026-10-08">2026-10-08</time> · White Paper · Part 1 · v1.0</p>

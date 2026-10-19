@@ -91,7 +91,7 @@ The author designed and built Agent Co-op and is its only user to date. The firs
 
 ### How the work was split
 
-The project behind this paper is Comstar Game AI, an open-source platform for building AI opponents for turn-based games. [6] The author builds it with two agents and a clear division of labor.
+The project behind this paper is Comstar Game AI, an open-source platform for building AI opponents for turn-based games. [6](#ref-6) The author builds it with two agents and a clear division of labor.
 
 Claude, Anthropic's model, is used only for reasoning: architecture, logic, and working out what should be built. It does not write the code. Claude is expensive to use heavily, so the author spends Claude tokens where reasoning matters most.
 
@@ -147,7 +147,7 @@ A reply must say which message it answers, so the person never has to match piec
 
 ### Hold messages until an agent looks
 
-Most agents do nothing until someone gives them a turn. The fix has to hold messages until an agent next looks, and tell that agent what is waiting. This does not fix delay. A message still waits until the agent is started. Section 6 returns to this.
+Most agents do nothing until someone gives them a turn. The fix has to hold messages until an agent next looks, and tell that agent what is waiting. This does not fix delay. A message still waits until the agent is started. [Section 6](#what-the-person-still-does) returns to this.
 
 ### Work with the tools already in use
 
@@ -163,7 +163,7 @@ Removing the courier work must not remove the person's control. Agents must not 
 
 ## 3. Why not an existing approach {#why-not-an-existing-approach}
 
-Several existing approaches could connect agents. The author looked at the two main protocols before building. Both are serious, well-supported standards, and neither is wrong. The question is whether they fit the constraint in Section 2: no infrastructure added on purpose.
+Several existing approaches could connect agents. The author looked at the two main protocols before building. Both are serious, well-supported standards, and neither is wrong. The question is whether they fit the constraint in [Section 2](#what-the-fix-had-to-do): no infrastructure added on purpose.
 
 <figure class="whitepaper-figure">
 <img src="../assets/white-papers/agent-coop/fig-infrastructure.webp" alt="What each approach needs" />
@@ -172,7 +172,7 @@ Several existing approaches could connect agents. The author looked at the two m
 
 ### Model Context Protocol (MCP)
 
-MCP connects an AI application to tools and data sources. Its messages use JSON-RPC, and its specification defines two standard transports. In the first, the client starts the server as a separate process on the same computer and exchanges messages over that process's standard input and output. This needs no network. In the second, the server runs independently and exposes an HTTP endpoint, which the specification tells servers to protect by checking where requests come from, binding only to the local machine when running locally, and authenticating connections. [1]
+MCP connects an AI application to tools and data sources. Its messages use JSON-RPC, and its specification defines two standard transports. In the first, the client starts the server as a separate process on the same computer and exchanges messages over that process's standard input and output. This needs no network. In the second, the server runs independently and exposes an HTTP endpoint, which the specification tells servers to protect by checking where requests come from, binding only to the local machine when running locally, and authenticating connections. [1](#ref-1)
 
 So MCP does not require a network. A builder could reasonably ask why the author did not write a small local MCP server with "send" and "check" tools, since both Cursor and Claude desktop can use MCP.
 
@@ -180,9 +180,9 @@ The answer is the constraint. Under the first transport, each application launch
 
 ### Agent2Agent protocol (A2A)
 
-A2A is built for agents talking to agents. Google published it in April 2025 and donated it to the Linux Foundation that June. Version 1.0 was frozen on March 12, 2026, and on August 17, 2026 the project moved into the Agentic AI Foundation, alongside MCP and AGENTS.md. [2][3]
+A2A is built for agents talking to agents. Google published it in April 2025 and donated it to the Linux Foundation that June. Version 1.0 was frozen on March 12, 2026, and on August 17, 2026 the project moved into the Agentic AI Foundation, alongside MCP and AGENTS.md. [2](#ref-2)[3](#ref-3)
 
-To take part, an agent publishes an agent card, a JSON description of what it can do, where to reach it, and how to authenticate, usually at a well-known web address. It offers one or more HTTP-based interfaces. Work is tracked as tasks with defined states, with optional streaming of updates and optional push notifications to a client's web address. [2]
+To take part, an agent publishes an agent card, a JSON description of what it can do, where to reach it, and how to authenticate, usually at a well-known web address. It offers one or more HTTP-based interfaces. Work is tracked as tasks with defined states, with optional streaming of updates and optional push notifications to a client's web address. [2](#ref-2)
 
 That design assumes each agent sits behind an endpoint that others can call, whether across the internet or on one machine. A code editor and a desktop chat app do not offer one. Giving them one would mean running a service for each.
 
@@ -196,13 +196,13 @@ Every tool in the author's setup can, given permission, read and write files in 
 
 ### An older idea
 
-Sharing work through a common store is not new. In the early 1970s the Hearsay-II speech understanding project introduced what became known as the blackboard architecture. Independent knowledge sources read and wrote a shared repository, the blackboard, and a control mechanism decided which source acted next. [4][5]
+Sharing work through a common store is not new. In the early 1970s the Hearsay-II speech understanding project introduced what became known as the blackboard architecture. Independent knowledge sources read and wrote a shared repository, the blackboard, and a control mechanism decided which source acted next. [4](#ref-4)[5](#ref-5)
 
 Agent Co-op's board follows the same basic pattern. The difference is control. In a classic blackboard system, a control component picks which source runs next. On the board, one agent, the driver, decides whom to ask, and a person decides what is approved.
 
 ## 4. How the board works {#how-the-board-works}
 
-This section explains the board in plain terms first. Builders will find the exact rules in Appendix A and in the protocol specification. [7]
+This section explains the board in plain terms first. Builders will find the exact rules in [Appendix A](#appendix-a-the-protocol-for-builders) and in the [protocol specification](https://github.com/zlatko-lakisic/agent-coop/blob/v0.2.0/SPEC.md). [7](#ref-7)
 
 <figure class="whitepaper-figure">
 <img src="../assets/white-papers/agent-coop/fig-message-lifecycle.webp" alt="The life of a message" />
@@ -239,7 +239,7 @@ When an agent has dealt with a message, it creates an empty marker file named af
 
 Every location on the board has exactly one agent allowed to write to it. An agent writes into another agent's inbox only by sending a new message, and only the recipient marks its own messages handled. Only the driver writes the project's files. The person, through the command, is the only one who changes the board's settings.
 
-That is a rule, not a lock. Section 8 explains the difference.
+That is a rule, not a lock. [Section 8](#known-considerations) explains the difference.
 
 ## 5. Authority is the design {#authority-is-the-design}
 
@@ -276,7 +276,7 @@ A new helper may need to understand a project before it can answer anything usef
 
 The request stays open until the driver replies to it. While it is open, the command refuses a second one. If an agent writes the file itself and sends several, only the earliest counts and the rest are flagged.
 
-This is the only case in which a helper speaks first, and it is deliberate. Version 0.2 of the specification records it as an exception to the role rules. Because the change is to the rules and not to the file format, a context request is an ordinary message file, and the message format version did not change. [7]
+This is the only case in which a helper speaks first, and it is deliberate. Version 0.2 of the specification records it as an exception to the role rules. Because the change is to the rules and not to the file format, a context request is an ordinary message file, and the message format version did not change. [7](#ref-7)
 
 ### Messages are information, not orders
 
@@ -290,7 +290,7 @@ Roles are set by the person through the command line or the local viewer. If the
 
 In Comstar, Cursor is the driver and Claude is a helper. The agent the author rates weakest holds the pen. The agent he rates strongest gives advice. Cost decides who drives. Quality decides who advises.
 
-That arrangement only works because the driver's output is checked. Section 7 describes how.
+That arrangement only works because the driver's output is checked. [Section 7](#the-approval-gate) describes how.
 
 ## 6. What the person still does {#what-the-person-still-does}
 
@@ -345,7 +345,7 @@ This is not a systematic check. There is no test suite that gates the driver's c
 
 When the person is not watching, the design needs a different gate. For runs started by the background schedule, version 0.2.0 moves the driver's work into a separate working copy of the project on its own branch. A branch is a separate line of changes that the person reviews before it becomes part of the main project. The driver may save its changes there but is not meant to push them, switch branches, or rewrite history. The person reviews the branch and merges what is acceptable.
 
-The mechanism behind this is a layer, not a wall. A substitute git command, placed first on the search path, blocks those actions when the agent calls git in the usual way. An agent that calls git by its full location would go around it. The separate working copy belongs to the same repository, so it shares that repository's remote connections. For Cursor, the scheduled run is also given a permissions file that allows writing only to the project copy and the board, and denies writing to the folder that holds the substitute command. For other tools, the documentation calls the guard a second layer and not a guarantee. [7]
+The mechanism behind this is a layer, not a wall. A substitute git command, placed first on the search path, blocks those actions when the agent calls git in the usual way. An agent that calls git by its full location would go around it. The separate working copy belongs to the same repository, so it shares that repository's remote connections. For Cursor, the scheduled run is also given a permissions file that allows writing only to the project copy and the board, and denies writing to the folder that holds the substitute command. [8](#ref-8) For other tools, the documentation calls the guard a second layer and not a guarantee. [7](#ref-7)
 
 Stronger isolation, such as a separate clone with no remotes or credentials, or an operating system sandbox, would turn the layer into a boundary. It is not part of the current design.
 
@@ -377,7 +377,7 @@ Every agent must be able to read and write the same folder on the same computer,
 
 All agents run as the same user on the computer. Any agent that can write to the board can write a message claiming to come from another agent, including the driver. The command checks roles for the messages it sends, and flags messages that break the rules, but a forged message that follows the rules looks genuine. The settings file is protected by an integrity check that an agent with write access could also rewrite.
 
-For most tools, the exact settings for a read-only lock are not yet confirmed, so they are not installed automatically. The specification states these limits itself. [7]
+For most tools, the exact settings for a read-only lock are not yet confirmed, so they are not installed automatically. The specification states these limits itself. [7](#ref-7)
 
 ### Agents act only when prompted
 
@@ -420,25 +420,33 @@ What remains is the person's judgment: starting the work, directing it, and appr
 
 ## References {#references}
 
-[1] Model Context Protocol. *Specification, version 2025-11-25: Transports.* https://modelcontextprotocol.io/specification/2025-11-25/basic/transports
+[1] Model Context Protocol. *[Specification, version 2025-11-25: Transports.](https://modelcontextprotocol.io/specification/2025-11-25/basic/transports)*
+{: #ref-1}
 
-[2] Agentic AI Foundation. *A2A v1.0: A builder's guide, part 1: discovery, tasks, and clients.* August 27, 2026. https://aaif.io/blog/a2a-v1-0-a-builder-s-guide-part-1-discovery-tasks-and-clients
+[2] Agentic AI Foundation. *[A2A v1.0: A builder's guide, part 1: discovery, tasks, and clients.](https://aaif.io/blog/a2a-v1-0-a-builder-s-guide-part-1-discovery-tasks-and-clients)* August 27, 2026.
+{: #ref-2}
 
-[3] Agentic AI Foundation. *A2A joins the Agentic AI Foundation.* August 2026. https://aaif.io/blog/a2a-joins-aaif
+[3] Agentic AI Foundation. *[A2A joins the Agentic AI Foundation.](https://aaif.io/blog/a2a-joins-aaif)* August 2026.
+{: #ref-3}
 
-[4] Erman, L. D., Hayes-Roth, F., Lesser, V. R., and Reddy, D. R. (1980). The Hearsay-II speech-understanding system: integrating knowledge to resolve uncertainty. *ACM Computing Surveys*, 12(2).
+[4] Erman, L. D., Hayes-Roth, F., Lesser, V. R., and Reddy, D. R. (1980). *[The Hearsay-II speech-understanding system: integrating knowledge to resolve uncertainty.](https://doi.org/10.1145/356810.356816)* *ACM Computing Surveys*, 12(2).
+{: #ref-4}
 
-[5] Dodhiawala, R., Jagannathan, V., Baum, L., and Skillman, T. (1989). The first workshop on blackboard systems. *AI Magazine*, 10(1). https://ojs.aaai.org/index.php/aimagazine/article/view/732
+[5] Dodhiawala, R., Jagannathan, V., Baum, L., and Skillman, T. (1989). *[The first workshop on blackboard systems.](https://ojs.aaai.org/index.php/aimagazine/article/view/732)* *AI Magazine*, 10(1).
+{: #ref-5}
 
-[6] Lakisic, Z. (2026). *Comstar Game AI.* https://github.com/zlatko-lakisic/comstar-game-ai
+[6] Lakisic, Z. (2026). *[Comstar Game AI.](https://github.com/zlatko-lakisic/comstar-game-ai)*
+{: #ref-6}
 
-[7] Lakisic, Z. (2026). *Agent Co-op*, version 0.2.0, with protocol specification version 0.2: README, SPEC.md, docs/security.md, docs/schedule.md. https://github.com/zlatko-lakisic/agent-coop
+[7] Lakisic, Z. (2026). *[Agent Co-op](https://github.com/zlatko-lakisic/agent-coop)*, version 0.2.0, with protocol specification version 0.2: [README](https://github.com/zlatko-lakisic/agent-coop/blob/v0.2.0/README.md), [SPEC.md](https://github.com/zlatko-lakisic/agent-coop/blob/v0.2.0/SPEC.md), [docs/security.md](https://github.com/zlatko-lakisic/agent-coop/blob/v0.2.0/docs/security.md), [docs/schedule.md](https://github.com/zlatko-lakisic/agent-coop/blob/v0.2.0/docs/schedule.md).
+{: #ref-7}
 
-[8] Cursor. *CLI reference: permissions.* https://cursor.com/docs/cli/reference/permissions
+[8] Cursor. *[CLI reference: permissions.](https://cursor.com/docs/cli/reference/permissions)*
+{: #ref-8}
 
 ## Appendix A: The protocol for builders {#appendix-a-the-protocol-for-builders}
 
-This appendix summarizes version 0.2 of the specification. Where the two differ, SPEC.md governs. [7]
+This appendix summarizes version 0.2 of the specification. Where the two differ, [SPEC.md](https://github.com/zlatko-lakisic/agent-coop/blob/v0.2.0/SPEC.md) governs. [7](#ref-7)
 
 ### Board layout
 
@@ -504,13 +512,13 @@ An agent can use the `agentcoop` command, which enforces roles, writes atomicall
 
 ## Appendix B: License and citation {#appendix-b-license-and-citation}
 
-This paper is licensed under a Creative Commons Attribution 4.0 International License.
+This paper is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
 
 You are free to share and adapt it for any purpose, including commercially, provided you give appropriate credit, link to the license, and indicate whether changes were made.
 
-Full license text: https://creativecommons.org/licenses/by/4.0/
+Full license text: [https://creativecommons.org/licenses/by/4.0/](https://creativecommons.org/licenses/by/4.0/)
 
-The Agent Co-op software is separately licensed under the Apache License 2.0.
+The Agent Co-op software is separately licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
 
 ### Suggested citation
 
@@ -523,7 +531,7 @@ Lakisic, Z. (2026). *The person is not the message bus: Agent Co-op and the case
 <div class="whitepaper-meta whitepaper-skip-listen" markdown="1">
 **White Paper, Version 0.3**
 
-**License:** Creative Commons Attribution 4.0 International (CC BY 4.0). The Agent Co-op software is separately licensed under the Apache License 2.0.  
+**License:** [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). The Agent Co-op software is separately licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).  
 **Author:** Zlatko Lakisic  
 **Portfolio:** [zlatko-lakisic.github.io](https://zlatko-lakisic.github.io/zlatko-lakisic/)  
 **LinkedIn:** [linkedin.com/in/zlatko-lakisic](https://www.linkedin.com/in/zlatko-lakisic/)
